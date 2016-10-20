@@ -2,6 +2,7 @@ package sql;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import dataRead.CheckIn;
+import sinaGrab.poiInForm;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -17,7 +18,7 @@ public class jdbcConnector {
     private static final String PASSWORD = "1234";
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     public static final String insertSql  = "insert into checkin (checkin,lat,lng,poiid,clock,content,datetime) values(?,?,?,?,?,?,?)";
-
+    public static final String insertPoiInform = "insert into poiinform (poiid,lat,lng,type) values(?,?,?,?)";
 
     /**
      * 获取数据库连接
@@ -81,6 +82,33 @@ public class jdbcConnector {
                 pstmt.setInt(5, checkIn.getTime());
                 pstmt.setString(6, checkIn.getContent());
                 pstmt.setString(7,checkIn.getDate());
+                pstmt.addBatch();
+                i ++;
+                if (i % 10000 == 0){
+                    pstmt.executeBatch();
+                    connection.commit();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        pstmt.executeBatch();
+        connection.commit();
+    }
+
+    /**
+     * 使用**数据库连接实例** 和 **preparestatement**进行连接的方法
+     * 使用了批量插入的方法
+     * @return
+     */
+    public static void poiInformInsert(List<poiInForm> poiInFormsList, Connection connection, PreparedStatement pstmt) throws SQLException {
+        int i = 0;
+        for (poiInForm poi : poiInFormsList) {
+            try {
+                pstmt.setString(1, poi.getPoiid());
+                pstmt.setString(2, poi.getLat());
+                pstmt.setString(3, poi.getLon());
+                pstmt.setString(4, poi.getType());
                 pstmt.addBatch();
                 i ++;
                 if (i % 10000 == 0){

@@ -20,7 +20,7 @@ import static sql.jdbcConnector.insertSql;
 /**
  * Created by coco1 on 2016/10/19.
  */
-public class Main {
+public class firstPartMain {
     public static void main(String args[]) throws IOException, JSONException, SQLException {
         Connection connection = getConn();
         connection.setAutoCommit(false);
