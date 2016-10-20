@@ -5,9 +5,12 @@ import json.JSONException;
 import json.JSONObject;
 
 import java.io.*;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
+import static sql.jdbcConnector.checkInInsert;
 
 /**
  * Created by coco1 on 2016/10/17.
@@ -15,11 +18,7 @@ import java.util.List;
  * 用来实现 文件 -> json -> check in
  */
 public class Util {
-    static List<File>  filepath;
     private static final String outputpath = "C:\\Users\\coco1\\IdeaProjects\\BeijingDataProcess\\output";
-    public Util(File dire) {
-        getFilePath(dire);
-    }
     /**
      * 从jsonObject中读取出checkin讯息
      *
@@ -29,11 +28,13 @@ public class Util {
      */
     public static CheckIn readJson(JSONObject jsonObject)  {
         try {
+            String idstr = jsonObject.getString("idstr");
             JSONArray coor = (JSONArray) jsonObject.getJSONObject("geo").get("coordinates");
             String content = (String)jsonObject.get("text");
+            String date = jsonObject.getString("created_at");
             int time = getTime((String)jsonObject.get("created_at"));
             String poiid  = jsonObject.getJSONArray("annotations").getJSONObject(0).getJSONObject("place").getString("poiid");
-            return new CheckIn(content, Double.parseDouble(coor.get(0).toString()), Double.parseDouble(coor.get(1).toString()), poiid, time);
+            return new CheckIn(idstr,content, coor.get(0).toString(), coor.get(1).toString(), poiid, date,time);
         } catch (JSONException e ) {
             e.printStackTrace();
             return null;
@@ -51,8 +52,8 @@ public class Util {
      *
      * @param file 文件地址
      */
-    public static void getFilePath ( File file) {
-        filepath = new LinkedList<>();
+    public static List<File> getFilePath ( File file) {
+        List<File> filepath = new LinkedList<>();
         if(file.isDirectory())
         {
             File f[]= file.listFiles();
@@ -60,13 +61,14 @@ public class Util {
             {
                 for(int i=0;i<f.length;i++)
                 {
-                    getFilePath(f[i]);
+                    filepath.addAll(getFilePath(f[i]));
                 }
             }
         } else {
                 System.out.println(file.toString());
                 filepath.add(file);
         }
+        return filepath;
     }
 
     /**
@@ -76,7 +78,7 @@ public class Util {
      *
      * @return jsonOBJ
      */
-    private static List<String> dataRead(File file) throws IOException {
+    public static List<String> dataRead(File file) throws IOException {
         InputStreamReader fReader = new InputStreamReader(new FileInputStream(file),"UTF-8");
         BufferedReader reader = new BufferedReader(fReader) ;
         List<String> ret = new LinkedList<>();
@@ -84,6 +86,7 @@ public class Util {
         while ((temp = reader.readLine()) != null) {
             ret.add(temp);
         }
+        ret.remove(ret.size() - 1);
         reader.close();
         fReader.close();
         return ret;
@@ -110,10 +113,31 @@ public class Util {
         }
         write_fw.close();
     }
-    public static void main(String args[]) throws IOException, JSONException {
-        List<String> json = dataRead(new File("C:\\Users\\coco1\\IdeaProjects\\BeijingDataProcess\\data\\2014-09-19-鍖椾含甯_json"));
+
+    /**
+     * 替换四个字节的字符 '\xF0\x9F\x98\x84\xF0\x9F）的解决方案 😁
+     * @author ChenGuiYong
+     * @data 2015年8月11日 上午10:31:50
+     * @param content 输入字符
+     * @return 返回处理完毕的字符
+     */
+    public static String removeFourChar(String content) {
+        byte[] conbyte = content.getBytes();
+        for (int i = 0; i < conbyte.length; i++) {
+            if ((conbyte[i] & 0xF8) == 0xF0) {
+                for (int j = 0; j < 4; j++) {
+                    conbyte[i+j]=0x30;
+                }
+                i += 3;
+            }
+        }
+        content = new String(conbyte);
+        return content.replaceAll("0000", "");
+    }
+    public static void main(String args[]) throws IOException, JSONException, SQLException {
+        List<String> json = dataRead(new File("C:\\Users\\coco1\\IdeaProjects\\BeijingDataProcess\\data\\2016-02-17-鍖椾含甯_json"));
         System.out.println(json.get(1));
-        CheckIn c = readJson(new JSONObject(json.get(1)));
+        CheckIn c = readJson(new JSONObject(json.get(0)));
         System.out.print(c);
     }
 }

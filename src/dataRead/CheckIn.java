@@ -1,5 +1,7 @@
 package dataRead;
 
+import static dataRead.Util.removeFourChar;
+
 /**
  * Created by coco1 on 2016/10/15.
  *
@@ -14,13 +16,12 @@ package dataRead;
  */
 public class CheckIn {
     private String content;
-    private double lat;
-    private double lng;
+    private String lat;
+    private String lng;
     private String poiid;
-    private int date;
-    public boolean isNull() {
-        return content == null || lat == 0 || lng == 0 || poiid == null || date == 0;
-    }
+    private int time;
+    private String idstr;
+    private String date;
     /**
      *
      * @param con 内容
@@ -29,20 +30,76 @@ public class CheckIn {
      * @param poiid 点id
      * @param date 时间
      */
-    public CheckIn(String con, double lat, double lng, String poiid, int date) {
-        content = con;
+    public CheckIn(String idstr, String con, String lat, String lng, String poiid, String date, int time) {
+        this.idstr = idstr;
+        content = removeFourChar(con);
         this.lat = lat;
         this.lng = lng;
         this.poiid = poiid;
         this.date = date;
+        this.time = time;
     }
     public String toString() {
-        return poiid + " " + lat + " " + lng  + " " + date + " " + content;
+        return idstr + " " + poiid + " " + lat + " " + lng  + " " + date + " " +time +" "+ content;
     }
     public static void main(String args[]) {
-        CheckIn c = new CheckIn("12", 12.1, 222.1, "123D" , 1);
-        System.out.print(c.toString());
     }
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
+
+    public String getPoiid() {
+        return poiid;
+    }
+
+    public void setPoiid(String poiid) {
+        this.poiid = poiid;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getIdstr() {
+        return idstr;
+    }
+
+    public void setIdstr(String idstr) {
+        this.idstr = idstr;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setT(int Time) {
+        this.time = Time;
+    }
+
 }
 
 
