@@ -134,14 +134,36 @@ public class getCityName {
 		location[1]		=		coor_jsarray.getDouble ( 1 ) ;
 		return location ;
 	}
+
+	/**
+	 * 测试该坐标点是否为北京坐标
+	 * @param lat 纬度
+	 * @param lng 经度
+	 * @return 是或者不是
+	 */
+	public static boolean isBeijing(double lat, double lng){
+		double[] 			location 			= 		new double[2];
+		location[0] = lat;
+		location[1] = lng;
+        String cityName = null;
+        try {
+            cityName = pcn_getProCityNameURL(location)[1];
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("ke也许出问题了");
+            return false;
+        }
+        return cityName.equals("北京市");
+	}
 	
 	public  static void main(String args[]) throws IOException
 	{
 		String[]			cityName			=		null;
 		double[] 			location 			= 		new double[2];
-		location[0] = 24.199999999999992;
-		location[1] = 120.7;
+		location[0] = 39.633;
+		location[1] = 116.479316;
 		cityName = pcn_getProCityNameURL(location) ;
-		System.out.println(cityName[0]);
+		System.out.println(cityName[1]);
+		System.out.println(isBeijing(location[0],location[1]));
 	}
 }

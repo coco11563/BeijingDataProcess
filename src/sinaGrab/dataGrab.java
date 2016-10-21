@@ -14,6 +14,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.*;
 
+import static sinaGrab.getCityName.isBeijing;
 import static sql.jdbcConnector.*;
 
 /**
@@ -80,16 +81,10 @@ public class dataGrab {
         int count = 50;            // 每页数据量
         int data_total_number = 0;            // 记录地区总的微博量
         String range = "1113.2";
-        int sim_whole = 0;            // 累计总数据
-        int sim_error = 0;            // 累计取错
-        int sim_blank = 0;            // 累计取空
         int error_back = 0;            // 一次URL取数据累计取空次数
         for (String[] aCoor : coor) {
             String lat = aCoor[0];
             String lon = aCoor[1];
-            int grabnum = 0; //init as 0
-            int type = 0; //init as 0
-            int last = 0; //init as 0
             int pages = 1;
             label:
             for (int page = 1; page <= pages; page++) {
@@ -109,7 +104,6 @@ public class dataGrab {
 
                     // 情况二：取错：ERROR，说明该账户请求次数超出限制。
                     case "error":
-                        sim_error++;
                         error_back++;
                         page--;
                         access_token_current++;
@@ -144,7 +138,11 @@ public class dataGrab {
                             List<poiInForm> li = new LinkedList<>();
                             // 插入到数据库中数据
                             for (int j1 = 0; j1 < array.length(); j1++) {
-                                li.add(getInform((JSONObject) array.get(j1)));
+                                poiInForm temp = getInform((JSONObject) array.get(j1));
+                                if (temp != null)
+                                    li.add(temp);
+                                else
+                                    System.err.print("wrong place");
                             }
                             poiInformInsert(li, connection, ps);
                             System.out.println("<-----------入库------------->");
@@ -170,7 +168,12 @@ public class dataGrab {
             String lon = o.getString("lon");
             String lat = o.getString("lat");
             String type = o.getString("category");
-            return new poiInForm(lat, lon, type, poiid);
+            if (isBeijing(Double.parseDouble(lat),Double.parseDouble(lon))) {//是北京
+                return new poiInForm(lat, lon, type, poiid);
+            } else {
+                System.out.println(lon + " " + lat + " is not beijing");
+                return null;
+            }
         } catch (JSONException e) {
             e.printStackTrace();
             return null;

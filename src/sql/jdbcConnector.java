@@ -97,9 +97,9 @@ public class jdbcConnector {
     }
 
     /**
+     * 向数据库中插入poi讯息的函数
      * 使用**数据库连接实例** 和 **preparestatement**进行连接的方法
      * 使用了批量插入的方法
-     * @return
      */
     public static void poiInformInsert(List<poiInForm> poiInFormsList, Connection connection, PreparedStatement pstmt) throws SQLException {
         int i = 0;
@@ -116,6 +116,7 @@ public class jdbcConnector {
                     connection.commit();
                 }
             } catch (SQLException e) {
+                System.err.println(e.toString());
                 e.printStackTrace();
             }
         }
