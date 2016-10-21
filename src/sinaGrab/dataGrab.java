@@ -22,7 +22,7 @@ import static sql.jdbcConnector.*;
  */
 public class dataGrab {
     private static final String poi_show_url = "https://api.weibo.com/2/place/pois/show.json?";
-    private static final String nearby_poi_url = "https://api.weibo.com/2/place/nearby/pois.json";
+    private static final String nearby_poi_url = "https://api.weibo.com/2/place/nearby/pois.json?";
 
     /**
      * @param token    access token
@@ -80,7 +80,7 @@ public class dataGrab {
         int access_token_current = 0;            // 当前钥匙编码
         int count = 50;            // 每页数据量
         int data_total_number = 0;            // 记录地区总的微博量
-        String range = "1113.2";
+        String range = "5566";
         int error_back = 0;            // 一次URL取数据累计取空次数
         for (String[] aCoor : coor) {
             String lat = aCoor[0];
@@ -91,6 +91,7 @@ public class dataGrab {
                 // 计算使用的账户
                 access_token_current = access_token_current % (access_token_total);
                 String URL = genarateNearbyPoi(token.get(access_token_current), lat, lon, range, Integer.toString(count), Integer.toString(page));
+                System.out.println(URL);
                 Thread.sleep(100);//降低访问频率的关键点一：休眠
                 System.out.println("纬度：" + lat + "度。");
                 System.out.println("经度：" + lon + "度。");
@@ -142,10 +143,12 @@ public class dataGrab {
                                 if (temp != null)
                                     li.add(temp);
                                 else
-                                    System.err.print("wrong place");
+                                    System.err.println("wrong place");
                             }
-                            poiInformInsert(li, connection, ps);
-                            System.out.println("<-----------入库------------->");
+                            if (li.size() > 0) {
+                                poiInformInsert(li, connection, ps);
+                                System.out.println("<-----------入库------------->");
+                            }
                             access_token_current++;//降低访问频率的关键点一：提高access_token切换次数。
                         } catch (JSONException e) {
                             System.out.println(e.getMessage());
@@ -171,7 +174,6 @@ public class dataGrab {
             if (isBeijing(Double.parseDouble(lat),Double.parseDouble(lon))) {//是北京
                 return new poiInForm(lat, lon, type, poiid);
             } else {
-                System.out.println(lon + " " + lat + " is not beijing");
                 return null;
             }
         } catch (JSONException e) {
@@ -192,9 +194,9 @@ public class dataGrab {
         c.set(Calendar.SECOND, 0);
         return (c.getTime().getTime() - System.currentTimeMillis()) / 1000;
     }
-    public static ArrayList<double[]> returnposition()
+    public static ArrayList<String[]> returnposition()
     {
-        ArrayList<double[]> ret = new ArrayList<double[]>();
+        ArrayList<String[]> ret = new ArrayList<>();
         LinkedList < AreaData > location = new LinkedList < AreaData > ( );
         location.add ( new AreaData ( 39.42358,40.793798,115.479316,117.282251 ) );// 京
         double lat_min,lat_max,lon_min,lon_max ;
@@ -203,7 +205,7 @@ public class dataGrab {
             lon_min = lat_lon.getLon_min();
             lat_max = lat_lon.getLat_max();
             lon_max = lat_lon.getLon_max();
-            double latlon = 0.01;
+            double latlon = 0.05;
 
             for (int i = 0; i < 2; i++) {
                 if (i == 1) {
@@ -215,9 +217,9 @@ public class dataGrab {
                 for (double lat = lat_min; lat < lat_max - latlon; lat = lat + 2 * latlon) {
                     for (double lon = lon_min; lon < lon_max - latlon; lon = lon + 2 * latlon) {
                         //System.out.println(lat+ " " +lon);
-                        double[] coordinary = new double[2];
-                        coordinary[0] = lat;
-                        coordinary[1] = lon;
+                        String[] coordinary = new String[2];
+                        coordinary[0] = Double.toString(lat);
+                        coordinary[1] = Double.toString(lon);
                         ret.add(coordinary);
                     }
                 }

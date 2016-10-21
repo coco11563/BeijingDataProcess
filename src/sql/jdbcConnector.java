@@ -103,6 +103,7 @@ public class jdbcConnector {
      */
     public static void poiInformInsert(List<poiInForm> poiInFormsList, Connection connection, PreparedStatement pstmt) throws SQLException {
         int i = 0;
+        System.out.println("插入" + poiInFormsList.size() + "条数据");
         for (poiInForm poi : poiInFormsList) {
             try {
                 pstmt.setString(1, poi.getPoiid());

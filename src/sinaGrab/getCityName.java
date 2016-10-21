@@ -106,7 +106,7 @@ public class getCityName {
 			if(cityName[1].contains ( "直辖县级行政单位" ) )
 				cityName[1]	=		temp_object.getString("district") ;
 			
-			System.out.println ( location[0]+"\t"+location[1] + ":\t" + cityName[0]+"-"+cityName[1]);
+//			System.out.println ( location[0]+"\t"+location[1] + ":\t" + cityName[0]+"-"+cityName[1]);
 			return cityName;
 		}
 		catch(Exception e)
@@ -115,7 +115,6 @@ public class getCityName {
 			cityName			=		new String[2] ;
 			cityName[0] = "exception province";
 			cityName[1] = "exception city";
-			System.out.println ( location[0]+"\t"+location[1] + ":\t" + cityName[0]+"-"+cityName[1]);
 			return cityName;
 		}
 	}
@@ -150,11 +149,30 @@ public class getCityName {
             cityName = pcn_getProCityNameURL(location)[1];
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("ke也许出问题了");
+            System.out.println("key也许出问题了");
             return false;
         }
+        System.out.println("是" + cityName);
         return cityName.equals("北京市");
 	}
+
+    /**
+     *
+     * @param o 传进来这个点的json讯息
+     * @param lat 传进来这个点的lat
+     * @param lon 传进来这个点的lon
+     * @return 是或者不是
+     */
+    public static boolean isBeijing(JSONObject o, double lat, double lon){
+        String cityName = null;
+        try {
+            cityName = o.getJSONObject("district_info").getString("city");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return isBeijing(lat, lon);
+        }
+        return cityName.equals("北京市");
+    }
 	
 	public  static void main(String args[]) throws IOException
 	{
