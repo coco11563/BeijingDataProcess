@@ -168,7 +168,7 @@ public class getCityName {
         try {
             cityName = o.getJSONObject("district_info").getString("province");
         } catch (JSONException e) {
-            e.printStackTrace();
+			System.err.println(o.toString());
             return isBeijing(lat, lon);
         }
         System.out.println(cityName);

@@ -4,15 +4,19 @@ import com.mysql.jdbc.PreparedStatement;
 import dataRead.CheckIn;
 import sinaGrab.poiInForm;
 
+import java.sql.BatchUpdateException;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by coco1 on 2016/10/19.
  */
 public class jdbcConnector {
+    public static int dul = 0;
+    public static int insert = 0;
     private static final String DATABASEADDRESS = "jdbc:mysql://localhost:3306/rawdata";
     private static final String USER = "root";
     private static final String PASSWORD = "1234";
@@ -106,6 +110,7 @@ public class jdbcConnector {
         System.out.println("插入" + poiInFormsList.size() + "条数据");
         for (poiInForm poi : poiInFormsList) {
             try {
+                insert++;
                 pstmt.setString(1, poi.getPoiid());
                 pstmt.setString(2, poi.getLat());
                 pstmt.setString(3, poi.getLon());
@@ -121,33 +126,76 @@ public class jdbcConnector {
                 e.printStackTrace();
             }
         }
-        pstmt.executeBatch();
-        connection.commit();
+        try {
+            pstmt.executeBatch();
+            connection.commit();
+        } catch (BatchUpdateException e) {
+            dul ++;
+           System.err.println("重复的插入:" + dul + "/" + insert);
+        }
+
     }
 
-    private static Integer getAll() {
+    /**
+     * @param poiid 传入poiid讯息
+     * @param connection 使用全局变量存储连接讯息
+     * @return 是否存在这个poiid
+     */
+    public static Boolean have(String poiid, Connection connection) {
+        PreparedStatement ps;
+        int num = 0;
+        String sql = "select count(*) from rawdata.poiinform a WHERE a.poiid=\'" + poiid+"\'";
+        try {
+            ps = (PreparedStatement)connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) { //需要把游标移动到第一位
+                num = rs.getInt(1);
+            }
+            if (num == 0) {
+                return false;
+            }
+        } catch (SQLException e) {
+            System.err.print("Wrong while query the num");
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    /**
+     * 获取checkin中所有的poi讯息
+     * @return List形式的String
+     */
+
+    public static List<String> getAllPoiid() {
+        List<String> ret = new ArrayList<>();
         Connection conn = getConn();
-        String sql = "select * from rawdata.checkin";
+        String sql = "select poiid from rawdata.checkin";
         PreparedStatement pstmt;
         try {
             pstmt = (PreparedStatement)conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             int col = rs.getMetaData().getColumnCount();
-            System.out.println("============================");
+            System.out.println("==============正在请求数据库查询POI==============");
             while (rs.next()) {
                 for (int i = 1; i <= col; i++) {
-                    System.out.print(rs.getString(i) + "\t");
-                    if ((i == 2) && (rs.getString(i).length() < 8)) {
-                        System.out.print("\t");
-                    }
+                    String get = rs.getString(i);
+                    if (get.length() == 20)
+                        ret.add(rs.getString(i));
                 }
-                System.out.println("");
             }
-            System.out.println("============================");
+            System.out.println("===============完成请求数据库查询POI=============");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return ret;
+    }
+
+    public static void main(String args[]) {
+//        Connection con = getConn();
+        getAllPoiid();
+//        if (have("B2094450D56AA1FD429E",con)) {
+//            System.out.println("right");
+//        }
     }
 }
 
