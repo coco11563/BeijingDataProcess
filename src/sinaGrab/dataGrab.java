@@ -171,7 +171,7 @@ public class dataGrab {
             String lon = o.getString("lon");
             String lat = o.getString("lat");
             String type = o.getString("category");
-            if (isBeijing(Double.parseDouble(lat),Double.parseDouble(lon))) {//是北京
+            if (isBeijing(o, Double.parseDouble(lat),Double.parseDouble(lon))) {//是北京
                 return new poiInForm(lat, lon, type, poiid);
             } else {
                 return null;

@@ -166,11 +166,12 @@ public class getCityName {
     public static boolean isBeijing(JSONObject o, double lat, double lon){
         String cityName = null;
         try {
-            cityName = o.getJSONObject("district_info").getString("city");
+            cityName = o.getJSONObject("district_info").getString("province");
         } catch (JSONException e) {
             e.printStackTrace();
             return isBeijing(lat, lon);
         }
+        System.out.println(cityName);
         return cityName.equals("北京市");
     }
 	
