@@ -240,50 +240,54 @@ public class dataGrab {
         return ret;
     }
 
-    public static List<poiInForm> processIgnoreData(List<String> poi, List<String> token) throws InterruptedException, SQLException
-    {
+    public static List<poiInForm> processIgnoreData(List<String> poi, List<String> token) throws InterruptedException, SQLException, JSONException {
         Connection connection = getConn();
         connection.setAutoCommit(false);
+        int grab_total_num = 0;
+        int not_exist_num = 0;
         int access_token_total = token.size();
         int access_token_current = 0;            // 当前钥匙编码
         int error_back = 0;
         PreparedStatement ps = (PreparedStatement) connection.prepareStatement(insertPoiInform);
         List<poiInForm> li = new LinkedList<>();
-        label:
         for (String s : poi) {
+            grab_total_num++;
             access_token_current = access_token_current % (access_token_total);
             String url = genaratePoiShow(token.get(access_token_current),s,0);
             System.out.println(url);
             String json_data = connUrl(url);
-            switch (json_data) {
-                case "[]":
-                    break label;
-
+            if (json_data.equals("[]")) {
                 // 情况二：取错：ERROR，说明该账户请求次数超出限制。
-                case "error":
-                    error_back++;
-                    access_token_current++;
-                    if (error_back < access_token_total * 2)//如果刷过两轮所有的access_token都取错，证明次数不够了，休眠到下一个整点才开始继续取数据。
-                    {
-                        System.out.println("-----------取错->换Key-------------\r\n\r\n");
-                    }
-                    break;
+            } else if (json_data.equals("error")) {
+                error_back++;
+                access_token_current++;
+                if (error_back < access_token_total * 2)//如果刷过两轮所有的access_token都取错，证明次数不够了，休眠到下一个整点才开始继续取数据。
+                {
+                    System.out.println("-----------取错->换Key-------------\r\n\r\n");
+                }
+
                 // 情况三：正常
-                default:
-                    // 解析json数据
-                    try {
-                        JSONObject js = new JSONObject(json_data);
-                        // 插入到数据库中数据
-                            poiInForm temp = getInform(js);
-                            if (temp != null)
-                                li.add(temp);
-                            else
-                                System.err.println("wrong");
-                        } catch (JSONException e) {
-                        e.printStackTrace();
-                        }
-                        access_token_current++;//降低访问频率的关键点一：提高access_token切换次数。
-                    break ;
+            } else {// 解析json数据
+                try {
+                    JSONObject js = new JSONObject(json_data);
+                    if (js.has("error")||js.getString("error").equals("Target poi does not exist!")) {
+                        System.err.println("this poi point dose not exist, so delete it");
+                        System.err.print(not_exist_num + " / " + grab_total_num);
+                        not_exist_num++;
+                        delCheckin(s,connection);
+                        continue;
+                    }
+                    // 插入到数据库中数据
+                    poiInForm temp = getInform(js);
+                    if (temp != null)
+                        li.add(temp);
+                    else
+                        System.err.println("wrong");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                access_token_current++;//降低访问频率的关键点一：提高access_token切换次数。
+
             }
         }
         return li;

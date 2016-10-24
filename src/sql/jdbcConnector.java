@@ -160,6 +160,18 @@ public class jdbcConnector {
         }
         return true;
     }
+    public static void delCheckin(String poiid, Connection connection) {
+        PreparedStatement ps;
+        String sql = "delete from rawdata.checkin a WHERE a.poiid=\'" + poiid + "\'";
+        try {
+            ps = (PreparedStatement)connection.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.print("Wrong while query the num");
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * 获取checkin中所有的poi讯息
@@ -169,13 +181,13 @@ public class jdbcConnector {
     public static List<String> getAllPoiid() {
         List<String> ret = new ArrayList<>();
         Connection conn = getConn();
-        String sql = "select poiid from rawdata.checkin";
+        String sql = "select DISTINCT poiid from rawdata.checkin";
         PreparedStatement pstmt;
         try {
             pstmt = (PreparedStatement)conn.prepareStatement(sql);
+            System.out.println("==============正在请求数据库查询POI==============");
             ResultSet rs = pstmt.executeQuery();
             int col = rs.getMetaData().getColumnCount();
-            System.out.println("==============正在请求数据库查询POI==============");
             while (rs.next()) {
                 for (int i = 1; i <= col; i++) {
                     String get = rs.getString(i);
@@ -192,7 +204,8 @@ public class jdbcConnector {
 
     public static void main(String args[]) {
 //        Connection con = getConn();
-        getAllPoiid();
+        List<String> get = getAllPoiid();
+        System.out.println(get.size());
 //        if (have("B2094450D56AA1FD429E",con)) {
 //            System.out.println("right");
 //        }
