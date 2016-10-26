@@ -24,6 +24,7 @@ public class ThirdPartMain {
     public static void main(String args[]) throws SQLException, IOException, JSONException, InterruptedException {
         tokenGrab tg = new tokenGrab("C:\\Users\\coco1\\IdeaProjects\\BeijingDataProcess\\Token\\key.json");
         Connection connection = getConn();
+        connection.setAutoCommit(false);
         List<String> getpoi = getAllPoiid();
         List<String> ignorePoi = new ArrayList<>();
         for (String s : getpoi) {
@@ -32,8 +33,10 @@ public class ThirdPartMain {
             }
         }
         List<poiInForm> ignorePoiData = processIgnoreData(ignorePoi, token);
+        System.out.println("====即将插入" + ignorePoiData.size() + "条数据====");
         PreparedStatement ps = (PreparedStatement) connection.prepareStatement(insertPoiInform);
         poiInformInsert(ignorePoiData, connection, ps);
+        System.out.println("====插入完成" + ignorePoiData.size() + "条数据====");
         ps.close();
         connection.close();
     }

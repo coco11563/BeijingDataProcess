@@ -32,7 +32,7 @@ public class dataGrab {
      */
 
     public static String genaratePoiShow(String token, String poiid, int base_app) {
-        return poi_show_url + "access_token=" + token + "&poiid=" + poiid + "&base_app" + base_app;
+        return poi_show_url + "access_token=" + token + "&poiid=" + poiid + "&base_app=" + base_app;
     }
 
     /**
@@ -274,7 +274,7 @@ public class dataGrab {
                         System.err.println("this poi point dose not exist, so delete it");
                         System.err.print(not_exist_num + " / " + grab_total_num);
                         not_exist_num++;
-                        delCheckin(s,connection);
+//                        delCheckin(s,connection);
                         continue;
                     }
                     // 插入到数据库中数据

@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by coco1 on 2016/10/19.
@@ -98,6 +99,8 @@ public class jdbcConnector {
         }
         pstmt.executeBatch();
         connection.commit();
+
+
     }
 
     /**
@@ -162,7 +165,7 @@ public class jdbcConnector {
     }
     public static void delCheckin(String poiid, Connection connection) {
         PreparedStatement ps;
-        String sql = "delete from rawdata.checkin a WHERE a.poiid=\'" + poiid + "\'";
+        String sql = "delete from rawdata.checkin WHERE poiid=\'" + poiid + "\'";
         try {
             ps = (PreparedStatement)connection.prepareStatement(sql);
             ps.executeUpdate();
@@ -204,10 +207,12 @@ public class jdbcConnector {
 
     public static void main(String args[]) {
 //        Connection con = getConn();
-        List<String> get = getAllPoiid();
-        System.out.println(get.size());
+//        List<String> get = getAllPoiid();
+//        System.out.println(get.size());
 //        if (have("B2094450D56AA1FD429E",con)) {
 //            System.out.println("right");
+        Logger log = Logger.getLogger("1024");
+        log.warning("hello 1024!!!");
 //        }
     }
 }
