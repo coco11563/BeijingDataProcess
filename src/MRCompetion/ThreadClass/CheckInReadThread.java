@@ -16,9 +16,14 @@ import static sql.jdbcConnector.getConn;
  * Created by coco1 on 2016/11/3.
  * 我发誓这是我最后一个JDBC的项目
  */
-public class CheckInReadThread {
+public class CheckInReadThread extends Thread{
     final static LinkedBlockingDeque<CheckIn> cirBQ = new LinkedBlockingDeque<>();
-
+    @Override
+    public void run(){
+        super.run();
+        getAllPoiid();
+        System.out.println("这是线程A");
+    }
     /**
      * 调用这个生成阻塞队列
      */
