@@ -18,6 +18,10 @@ import static sql.jdbcConnector.getConn;
  */
 public class CheckInReadThread {
     final static LinkedBlockingDeque<CheckIn> cirBQ = new LinkedBlockingDeque<>();
+
+    /**
+     * 调用这个生成阻塞队列
+     */
     public static void getAllPoiid() {
         Connection conn = getConn();
         PreparedStatement pstmt;
@@ -35,11 +39,8 @@ public class CheckInReadThread {
                 rs.beforeFirst(); //把游标移到最前
                 int col = rs.getMetaData().getColumnCount();
                 while (rs.next()) {
-                    for (int i = 1; i <= col; i++) {
-                        String get = rs.getString(i);
-                        System.out.print(get + " ");
-                    }
-                    System.out.println();
+                    cirBQ.add(new CheckIn(rs.getString(0), rs.getString(6), rs.getString(1),rs.getString(2),
+                            rs.getString(3),rs.getString(5),Integer.parseInt(rs.getString(4))));
                 }
                 offset = offset + limit;
                 System.out.println("===============完成请求数据库查询签到数据=============");
