@@ -35,6 +35,7 @@ public class jdbcConnector {
         try {
             Class.forName(DRIVER); //classLoader,加载对应驱动
             conn = (Connection) DriverManager.getConnection(DATABASEADDRESS, USER, PASSWORD);
+            conn.setAutoCommit(false);
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("can't connect to db");
             e.printStackTrace();
