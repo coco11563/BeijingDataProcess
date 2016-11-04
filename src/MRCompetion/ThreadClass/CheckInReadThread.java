@@ -17,7 +17,7 @@ import static sql.jdbcConnector.getConn;
  * 我发誓这是我最后一个JDBC的项目
  */
 public class CheckInReadThread extends Thread{
-    final static LinkedBlockingDeque<CheckIn> cirBQ = new LinkedBlockingDeque<>();
+    public final static LinkedBlockingDeque<CheckIn> cirBQ = new LinkedBlockingDeque<>();
     @Override
     public void run(){
         super.run();
@@ -27,7 +27,7 @@ public class CheckInReadThread extends Thread{
     /**
      * 调用这个生成阻塞队列
      */
-    public static void getAllPoiid() {
+    private void getAllPoiid() {
         Connection conn = getConn();
         PreparedStatement pstmt;
         int limit = 500;
@@ -54,10 +54,10 @@ public class CheckInReadThread extends Thread{
             }
         }
     }
-    public static String generateSql(int offset, int limit) {
+    private static String generateSql(int offset, int limit) {
         return "select DISTINCT * from rawdata.checkin LIMIT " +limit + " OFFSET " +offset ;
     }
     public static void main(String args[]) {
-        getAllPoiid();
+
     }
 }
