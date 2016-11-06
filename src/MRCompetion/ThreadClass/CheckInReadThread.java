@@ -30,13 +30,12 @@ public class CheckInReadThread extends Thread{
     private void getAllPoiid() {
         Connection conn = getConn();
         PreparedStatement pstmt;
-        int limit = 500;
+        int limit = 5000;
         int offset = 0;
         while(true) {
             try {
                 String sql = generateSql(offset, limit);
                 pstmt = (PreparedStatement) conn.prepareStatement(sql);
-                System.out.println("==============正在请求数据库查询签到数据==============");
                 ResultSet rs = pstmt.executeQuery();
                 if (!rs.next()) { //没取到值
                     break;
@@ -44,11 +43,10 @@ public class CheckInReadThread extends Thread{
                 rs.beforeFirst(); //把游标移到最前
                 int col = rs.getMetaData().getColumnCount();
                 while (rs.next()) {
-                    cirBQ.add(new CheckIn(rs.getString(0), rs.getString(6), rs.getString(1),rs.getString(2),
-                            rs.getString(3),rs.getString(5),Integer.parseInt(rs.getString(4))));
+                    cirBQ.add(new CheckIn(rs.getString(1), rs.getString(7), rs.getString(2),rs.getString(3),
+                            rs.getString(4),rs.getString(6),Integer.parseInt(rs.getString(5))));
                 }
                 offset = offset + limit;
-                System.out.println("===============完成请求数据库查询签到数据=============");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

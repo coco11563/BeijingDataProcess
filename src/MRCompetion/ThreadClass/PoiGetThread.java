@@ -26,14 +26,9 @@ public class PoiGetThread extends Thread{
                 }
                 i = 0;
             } else {
-                if (i > 1000) {
-                    System.out.println("当前线程暂停次数过多，执行释放");
-                    Thread.currentThread().interrupt();
-                    break;
-                }
                 try {
-                    System.out.print(Thread.currentThread().getName() + ":检测到队列为空，暂停10秒");
-                    Thread.sleep(10000);
+                    System.out.println(Thread.currentThread().getName() + ":检测到队列为空，暂停1秒");
+                    Thread.sleep(1000);
                     i ++;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
