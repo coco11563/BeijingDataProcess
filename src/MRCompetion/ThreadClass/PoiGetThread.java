@@ -16,6 +16,7 @@ public class PoiGetThread extends Thread{
     public final static LinkedBlockingDeque<CheckIn> pgtBQ = new LinkedBlockingDeque<>();
     @Override
     public void run() {
+        super.run();
         Connection con = getConn();
         int i = 0;
         while(true) {
@@ -27,7 +28,7 @@ public class PoiGetThread extends Thread{
                 i = 0;
             } else {
                 try {
-                    System.out.println(Thread.currentThread().getName() + ":检测到队列为空，暂停1秒");
+//                    System.out.println(Thread.currentThread().getName() + ":检测到队列为空，暂停1秒");
                     Thread.sleep(1000);
                     i ++;
                 } catch (InterruptedException e) {

@@ -27,18 +27,14 @@ public class TableCreator {
                 "    checkinnum INT(11) DEFAULT '0'\n" +
                 ");";
     }
+    public static String getAlert(int time) {
+        return  "ALTER TABLE `poistatus_3` ADD UNIQUE ( `poiid` ) ;";
+    }
     public static void main(String args[]) throws SQLException {
         Connection conn = getConn();
         PreparedStatement ps;
         for (int i = 1 ; i < 24 ; i ++) {
-            String sql = "CREATE TABLE poistatus_" +i + "\n"+
-                    "(\n" +
-                    "    lat CHAR(20) NOT NULL,\n" +
-                    "    lng CHAR(20) NOT NULL,\n" +
-                    "    poiid CHAR(30) PRIMARY KEY NOT NULL,\n" +
-                    "    type CHAR(6) NOT NULL,\n" +
-                    "    checkinnum INT(11) DEFAULT '0'\n" +
-                    ");";
+            String sql =  "ALTER TABLE `poistatus_"+i +"` ADD UNIQUE ( `poiid` ) ;";
             ps = (PreparedStatement) conn.prepareStatement(sql);
             ps.execute();
         }

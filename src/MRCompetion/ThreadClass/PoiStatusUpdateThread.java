@@ -14,7 +14,7 @@ import static sql.jdbcConnector.getConn;
  */
 public class PoiStatusUpdateThread extends Thread{
     public String generateSql(String field, int time) {
-        System.out.println("更正：" + field + "|时间为：" + time);
+//        System.out.println("更正：" + field + "|时间为：" + time);
         return "update rawdata.poistatus_"+time + " set checkinnum=checkinnum+1 where poiid=\'"+field + "\'";
     }
     public String generateSqlLock(int time) {
@@ -22,6 +22,7 @@ public class PoiStatusUpdateThread extends Thread{
     }
     @Override
     public void run() {
+        super.run();
         Connection conn = getConn();
         PreparedStatement ps;
         PreparedStatement ps_lock;
@@ -46,7 +47,7 @@ public class PoiStatusUpdateThread extends Thread{
                 }
             } else {
                 try {
-                    System.out.println(Thread.currentThread().getName() + ":当前队列中无数据，Update线程暂停");
+//                    System.out.println(Thread.currentThread().getName() + ":当前队列中无数据，Update线程暂停");
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();

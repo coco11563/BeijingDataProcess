@@ -1,16 +1,30 @@
 package MRCompetion;
 
 import MRCompetion.ThreadClass.CheckInReadThread;
+import MRCompetion.ThreadClass.DeamonThread;
 import MRCompetion.ThreadClass.PoiGetThread;
 import MRCompetion.ThreadClass.PoiStatusUpdateThread;
 
 /**
  * Created by coco1 on 2016/10/31.
+ * 北京市共606万条数据
+ * 实验分为10个量级
+ * 从60W -> 606W
+ * 6W:352797ms
  */
 public class Competion {
+    static int num = 60000;
     public static void main(String args[]) {
+        generateThread(num);
+    }
+    /**
+     * 生成进程
+     */
+    private static void generateThread(int num) {
+        DeamonThread dt = new DeamonThread();
+        dt.start();
         System.out.println("正在进行读取线程初始化...");
-        CheckInReadThread c = new CheckInReadThread();
+        CheckInReadThread c = new CheckInReadThread(num);
         c.start();
         System.out.println("正在进行查询线程初始化...");
         for (int i = 0 ; i < 4 ; i ++) {
@@ -18,20 +32,15 @@ public class Competion {
             pgt.start();
         }
         System.out.println("正在进行更新线程初始化...");
-        for (int i = 0 ; i < 10 ; i ++) {
+        for (int i = 0 ; i < 12 ; i ++) {
             PoiStatusUpdateThread psut = new PoiStatusUpdateThread();
             psut.start();
         }
-        while(true) {
-            try {
-                Thread.sleep(10000);
-                printThreadList();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
     }
-    public static void printThreadList() {
+    /**
+     * 进程情况打印
+     */
+    private static void printThreadList() {
         ThreadGroup group = Thread.currentThread().getThreadGroup();
         while (group.getParent() != null) {
             group = group.getParent();
