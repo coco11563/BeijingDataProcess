@@ -13,7 +13,7 @@ import static sql.jdbcConnector.have;
  * Created by coco1 on 2016/11/3.
  */
 public class PoiGetThread extends Thread{
-    public final static LinkedBlockingDeque<CheckIn> pgtBQ = new LinkedBlockingDeque<>();
+    public final static LinkedBlockingDeque<CheckIn> pgtBQ = new LinkedBlockingDeque<>(5000);
     @Override
     public void run() {
         super.run();

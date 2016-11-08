@@ -30,7 +30,7 @@ public class DeamonThread extends Thread {
             }
             len_cira = cirBQ.size();
             len_pgta = pgtBQ.size();
-            System.out.println(len_cira + "," + len_cirb + "," + len_pgta + "," + len_pgtb);
+            System.out.println(len_cirb + "," + len_pgtb + "," + len_cira + "," + len_pgta);
             if (len_cira == len_cirb && len_cira == 0 && len_pgta == len_pgtb && len_pgta == 0) {
                 n++;
                 if (n > 100) {

@@ -27,7 +27,7 @@ public class CheckInReadThread extends Thread{
     public CheckInReadThread() {
         this.num = Integer.MAX_VALUE;
     }
-    public final static LinkedBlockingDeque<CheckIn> cirBQ = new LinkedBlockingDeque<>();
+    public final static LinkedBlockingDeque<CheckIn> cirBQ = new LinkedBlockingDeque<>(50000);
     @Override
     public void run(){
         super.run();
