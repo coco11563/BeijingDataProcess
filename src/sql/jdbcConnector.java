@@ -145,10 +145,10 @@ public class jdbcConnector {
      * @param connection 使用全局变量存储连接讯息
      * @return 是否存在这个poiid
      */
-    public static Boolean have(String poiid, Connection connection) {
-        PreparedStatement ps;
+    public static Boolean have(String poiid, Connection connection) throws SQLException {
+        PreparedStatement ps = null;
         int num = 0;
-        String sql = "select count(*) from rawdata.poiinform a WHERE a.poiid=\'" + poiid+"\'";
+        String sql = "select count(*) from rawdata.poiinform a WHERE a.poiid=\'" + poiid+"\'LIMIT 1";
         try {
             ps = (PreparedStatement)connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -161,6 +161,8 @@ public class jdbcConnector {
         } catch (SQLException e) {
             System.err.print("Wrong while query the num");
             e.printStackTrace();
+        } finally {
+            ps.close();
         }
         return true;
     }
@@ -206,16 +208,17 @@ public class jdbcConnector {
         return ret;
     }
 
-    public static void main(String args[]) {
-//        Connection con = getConn();
-//        List<String> get = getAllPoiid();
+    public static void main(String args[]) throws SQLException {
+        Connection con = getConn();
+//       List<String> get = getAllPoiid();
 //        System.out.println(get.size());
-//        if (have("B2094450D56AA1FD429E",con)) {
-//            System.out.println("right");
-        Logger log = Logger.getLogger("1024");
-        log.warning("hello 1024!!!");
+       if (have("B2094450D56AA1FD429E",con)) {
+           System.out.println("right");
+//        Logger log = Logger.getLogger("1024");
+//        log.warning("hello 1024!!!");
 //        }
     }
+}
 }
 
 

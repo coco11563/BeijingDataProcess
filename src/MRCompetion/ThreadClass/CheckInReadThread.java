@@ -18,6 +18,7 @@ import static sql.jdbcConnector.getConn;
  * 500000row -> 6.12sec
  */
 public class CheckInReadThread extends Thread{
+    public volatile boolean shouldEnd = false;
     private static int num;
     private static int limit = 50000;
     private static volatile int offset = 0;
@@ -43,25 +44,28 @@ public class CheckInReadThread extends Thread{
         PreparedStatement pstmt;
         int offset = 0;
         while(true) {
+            if (shouldEnd) {
+                break;
+            }
             offset = CheckInReadThread.offset;
             addOffset();
             if (offset - limit > num) {
-                break;
+                shouldEnd = true;
             }
             try {
                 String sql = generateSql(offset, limit);
                 pstmt = (PreparedStatement) conn.prepareStatement(sql);
                 ResultSet rs = pstmt.executeQuery();
-                if (!rs.next()) { //没取到值
-                    break;
+                if (!rs.next()) { //没取到值 数据取完了
+                    shouldEnd = true;
                 }
                 rs.beforeFirst(); //把游标移到最前
-                int col = rs.getMetaData().getColumnCount();
+//                int col = rs.getMetaData().getColumnCount();
                 while (rs.next()) {
-                    cirBQ.add(new CheckIn(rs.getString(1), rs.getString(7), rs.getString(2),rs.getString(3),
+                    cirBQ.put(new CheckIn(rs.getString(1), rs.getString(7), rs.getString(2),rs.getString(3),
                             rs.getString(4),rs.getString(6),Integer.parseInt(rs.getString(5))));
                 }
-            } catch (SQLException e) {
+            } catch (SQLException | InterruptedException e) {
                 e.printStackTrace();
             }
         }

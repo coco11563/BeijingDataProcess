@@ -11,9 +11,12 @@ import MRCompetion.ThreadClass.PoiStatusUpdateThread;
  * 实验分为10个量级
  * 从60W -> 606W
  * 6W:352797ms
+ * 6W:298663ms
+ * 6W:124992ms
+ * 60W:1220218ms
  */
 public class Competion {
-    static int num = 60000;
+    static int num = 1200000;
     public static void main(String args[]) {
         generateThread(num);
     }
@@ -32,7 +35,7 @@ public class Competion {
             pgt.start();
         }
         System.out.println("正在进行更新线程初始化...");
-        for (int i = 0 ; i < 12 ; i ++) {
+        for (int i = 0 ; i < 4 ; i ++) {
             PoiStatusUpdateThread psut = new PoiStatusUpdateThread();
             psut.start();
         }
