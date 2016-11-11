@@ -13,10 +13,18 @@ import MRCompetion.ThreadClass.PoiStatusUpdateThread;
  * 6W:352797ms
  * 6W:298663ms
  * 6W:124992ms
- * 60W:1220218ms
+ * 60W:1220218ms （1,4,4）
+ * 120W：2385960ms（1,4,4）
+ * 180W: 3273232ms (1,4,4)
+ * 240W: 4427490ms (1,4,4)
+ * 120W：1342935ms（1,4,8）
+ * 120W：942178ms （1,4,24）
+ * 120W：944087ms（1,3,24）
+ * 120W:1158856ms (1,3,12)
+ * 120W:1214229ms (1,4,12)
  */
 public class Competion {
-    static int num = 1200000;
+    static int num = 2400000;
     public static void main(String args[]) {
         generateThread(num);
     }
