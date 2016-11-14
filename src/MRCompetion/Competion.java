@@ -51,7 +51,7 @@ public class Competion {
     /**
      * 进程情况打印
      */
-    private static void printThreadList() {
+    public static void printThreadList() {
         ThreadGroup group = Thread.currentThread().getThreadGroup();
         while (group.getParent() != null) {
             group = group.getParent();

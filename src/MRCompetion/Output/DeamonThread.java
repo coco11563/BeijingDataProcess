@@ -1,5 +1,7 @@
-package MRCompetion.ThreadClass;
+package MRCompetion.Output;
 
+import static MRCompetion.Output.CheckInPutThread.CIPTBQ;
+import static MRCompetion.Output.CheckOutPutThread.COPTBQ;
 import static MRCompetion.ThreadClass.CheckInReadThread.cirBQ;
 import static MRCompetion.ThreadClass.PoiGetThread.pgtBQ;
 
@@ -13,27 +15,27 @@ public class DeamonThread extends Thread {
     public void run() {
         super.run();
         long time_start = System.currentTimeMillis();
-        int len_cirb;
-        int len_pgtb;
-        int len_cira;
-        int len_pgta;
+        int len_ciptbqa;
+        int len_ciptbqb;
+        int len_coptbqa;
+        int len_coptbqb;
 
         while(true) {
-            len_cirb = cirBQ.size();
-            len_pgtb = pgtBQ.size();
+            len_ciptbqa = CIPTBQ.size();
+            len_coptbqa = COPTBQ.size();
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            len_cira = cirBQ.size();
-            len_pgta = pgtBQ.size();
-            System.out.println(len_cirb + "," + len_pgtb + "," + len_cira + "," + len_pgta);
-            if (len_cira == len_cirb && len_cira == 0 && len_pgta == len_pgtb && len_pgta == 0) {
+            len_ciptbqb = CIPTBQ.size();
+            len_coptbqb = COPTBQ.size();
+            System.out.println(len_ciptbqa + "," + len_coptbqa + "," + len_ciptbqb + "," + len_coptbqb);
+            if (len_ciptbqa == len_ciptbqb && len_coptbqa == 0 && len_coptbqa == len_coptbqb && len_coptbqb == 0) {
                 n++;
                 if (n > 100) {
                     long time_end = System.currentTimeMillis();
-                    System.out.println("这一次执行时间为：" + (time_end - time_start) + "ms");
+                    System.out.println("执行时间为：" + (time_end - time_start) + "ms");
                     break;
                 }
             } else {
