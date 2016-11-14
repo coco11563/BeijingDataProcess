@@ -166,6 +166,8 @@ public class jdbcConnector {
         }
         return true;
     }
+
+
     public static void delCheckin(String poiid, Connection connection) {
         PreparedStatement ps;
         String sql = "delete from rawdata.checkin WHERE poiid=\'" + poiid + "\'";
