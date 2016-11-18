@@ -38,11 +38,17 @@ public class HbaseOperation {
             int i = 0;
             ArrayList<Put> putDateList = new ArrayList<Put>();
             HTable cityTable = getTable();
+            cityTable.setAutoFlushTo(false);//
             while(true) {
-                if (i > 1000) {
+                if (i > 100) {
+                    cityTable.put(putDateList);
+                    cityTable.flushCommits();
+                    putDateList.clear();
+                    logger.info("进行一次写入");
                     this.interrupt();
                 }
                 try {
+                    i = 0;
                     CheckIn c = cirBQ.take();
                     Put p = put(c);
                     putDateList.add(p);
@@ -59,6 +65,7 @@ public class HbaseOperation {
                     e.printStackTrace();
                 }
             }
+
         }
     }
 

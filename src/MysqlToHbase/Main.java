@@ -2,6 +2,8 @@ package MysqlToHbase;
 
 import MRCompetion.ThreadClass.CheckInReadThread;
 
+import static MRCompetion.Competion.printThreadList;
+import static MRCompetion.ThreadClass.CheckInReadThread.cirBQ;
 import static MysqlToHbase.HbaseQL.columnFamily;
 import static MysqlToHbase.HbaseQL.tableName;
 
@@ -11,7 +13,7 @@ import static MysqlToHbase.HbaseQL.tableName;
  * mysql to Hbase的主线程
  */
 public class Main {
-    public static void main(String args[]) {
+    public static void main(String args[]) throws InterruptedException {
 
         try {
             HbaseQL.create(tableName, columnFamily);
@@ -27,6 +29,10 @@ public class Main {
         for (int i = 0 ; i < 6 ; i ++) {
             HbaseOperation.InsertThread insertThread = new HbaseOperation.InsertThread();
             insertThread.start();
+        }while (true) {
+            Thread.sleep(10000);
+            System.out.println("当前队列内待处理的数据量为："+cirBQ.size());
+            printThreadList();
         }
     }
 }

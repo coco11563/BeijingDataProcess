@@ -20,6 +20,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 
 public class HbaseScan {
+    private static final String keyword = "李志";
     public static void main(String[] args) {
         try{
             Configuration config = HBaseConfiguration.create();
@@ -32,14 +33,14 @@ public class HbaseScan {
             // set other scan attrs
             //scan.addColumn(family, qualifier);
             TableMapReduceUtil.initTableMapperJob(
-                    "access-log",        // input table
+                    "checkinInform",        // input table
                     scan,               // Scan instance to control CF and attribute selection
                     MyMapper.class,     // mapper class
                     Text.class,         // mapper output key
                     IntWritable.class,  // mapper output value
                     job);
             TableMapReduceUtil.initTableReducerJob(
-                    "total-access",        // output table
+                    "count",        // output table
                     MyTableReducer.class,    // reducer class
                     job);
             job.setNumReduceTasks(1);   // at least one, adjust as required

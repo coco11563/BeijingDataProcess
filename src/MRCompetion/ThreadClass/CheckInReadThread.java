@@ -21,14 +21,15 @@ public class CheckInReadThread extends Thread{
     public volatile boolean shouldEnd = false;
     private static int num;
     private static int limit = 50000;
+    private static int cache = 500000;
     private static volatile int offset = 0;
     public CheckInReadThread(int num) {
-        this.num = num;
+        CheckInReadThread.num = num;
     }
     public CheckInReadThread() {
-        this.num = Integer.MAX_VALUE;
+        num = Integer.MAX_VALUE;
     }
-    public final static LinkedBlockingDeque<CheckIn> cirBQ = new LinkedBlockingDeque<>(50000);
+    public final static LinkedBlockingDeque<CheckIn> cirBQ = new LinkedBlockingDeque<>(cache);
     @Override
     public void run(){
         super.run();

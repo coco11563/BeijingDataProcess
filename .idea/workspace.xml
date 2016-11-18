@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c221ac53-8ac6-4f94-ab88-e32ce7b69bbb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MysqlHbaseScanner/HbaseScan.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MysqlHbaseScanner/MysqlGetter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MysqlToHbase/HbaseOperation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MysqlToHbase/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MysqlToHbase/HbaseQL.java" afterPath="$PROJECT_DIR$/src/MysqlToHbase/HbaseQL.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sql/jdbcConnector.java" afterPath="$PROJECT_DIR$/src/sql/jdbcConnector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java" afterPath="$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MysqlHbaseScanner/HbaseScan.java" afterPath="$PROJECT_DIR$/src/MysqlHbaseScanner/HbaseScan.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MysqlToHbase/HbaseOperation.java" afterPath="$PROJECT_DIR$/src/MysqlToHbase/HbaseOperation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MysqlToHbase/Main.java" afterPath="$PROJECT_DIR$/src/MysqlToHbase/Main.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -42,12 +40,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
+      <file leaf-file-name="CheckInReadThread.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="31" column="92" selection-start-line="31" selection-start-column="92" selection-end-line="31" selection-end-column="92" />
+              <folding>
+                <element signature="e#697#698#0" expanded="true" />
+                <element signature="e#740#741#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MRCompetion/Output/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
-              <folding />
+            <state relative-caret-position="459">
+              <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="25" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -72,27 +85,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HbaseOperation.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HbaseOperation.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MysqlToHbase/HbaseOperation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="663">
+              <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MysqlGetter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MysqlHbaseScanner/MysqlGetter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#510#511#0" expanded="true" />
-                <element signature="e#542#543#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -101,8 +100,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MysqlToHbase/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+            <state relative-caret-position="1224">
+              <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,12 +126,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HbaseScan.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HbaseScan.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MysqlHbaseScanner/HbaseScan.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
-              <folding />
+            <state relative-caret-position="-79">
+              <caret line="64" column="31" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -214,7 +215,6 @@
         <option value="$PROJECT_DIR$/src/sql/TableCreator.java" />
         <option value="$PROJECT_DIR$/src/MRCompetion/ThreadClass/RunOutOfQueue.java" />
         <option value="$PROJECT_DIR$/src/MRCompetion/ThreadClass/PoiStatusUpdateThread.java" />
-        <option value="$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java" />
         <option value="$PROJECT_DIR$/src/MRCompetion/ThreadClass/PoiGetThread.java" />
         <option value="$PROJECT_DIR$/src/MRCompetion/Competion.java" />
         <option value="dbtable:/7a8d0b76/5a55f659-9a30-4998-b23c-75323c1d8fad/rawdata.poiinform" />
@@ -227,14 +227,15 @@
         <option value="$PROJECT_DIR$/src/MRCompetion/ThreadClass/DeamonThread.java" />
         <option value="$PROJECT_DIR$/src/MRCompetion/Output/DeamonThread.java" />
         <option value="$PROJECT_DIR$/src/MRCompetion/Output/main.java" />
-        <option value="$PROJECT_DIR$/src/MysqlToHbase/HbaseOperation.java" />
         <option value="$PROJECT_DIR$/src/MysqlToHbase/MysqlGetter.java" />
         <option value="$PROJECT_DIR$/src/MysqlHbaseScanner/MysqlGetter.java" />
         <option value="$PROJECT_DIR$/src/MysqlToHbase/HbaseQL.java" />
-        <option value="$PROJECT_DIR$/src/MysqlToHbase/Main.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/5a55f659-9a30-4998-b23c-75323c1d8fad/console.sql" />
         <option value="$PROJECT_DIR$/src/sql/jdbcConnector.java" />
         <option value="$PROJECT_DIR$/src/MysqlHbaseScanner/HbaseScan.java" />
+        <option value="$PROJECT_DIR$/src/MysqlToHbase/Main.java" />
+        <option value="$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java" />
+        <option value="$PROJECT_DIR$/src/MysqlToHbase/HbaseOperation.java" />
       </list>
     </option>
   </component>
@@ -257,8 +258,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-13" />
     <option name="y" value="-13" />
-    <option name="width" value="2906" />
-    <option name="height" value="1566" />
+    <option name="width" value="2762" />
+    <option name="height" value="1770" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -495,7 +496,7 @@
       <recent name="C:\Users\coco1\IdeaProjects\BeijingDataProcess\src\MRCompetion\StreamTestData" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.jdbcConnector">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Competion" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1080,8 +1081,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.jdbcConnector" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="1" class="java.lang.String" itemvalue="Application.jdbcConnector" />
         <item index="2" class="java.lang.String" itemvalue="Application.ExampleClient" />
         <item index="3" class="java.lang.String" itemvalue="Application.main" />
         <item index="4" class="java.lang.String" itemvalue="Application.Competion" />
@@ -1124,7 +1125,7 @@
       <workItem from="1478777104010" duration="7062000" />
       <workItem from="1479089928482" duration="5420000" />
       <workItem from="1479110890623" duration="1856000" />
-      <workItem from="1479389449160" duration="12012000" />
+      <workItem from="1479389449160" duration="17234000" />
     </task>
     <task id="LOCAL-00001" summary="完成了第一部分的代码&#10;即从json数据中提取所需要 的字段，并将其存入到mysql数据库中&#10;这一步产生的数据用于第二步poi数据的补充以及之后数据的训练">
       <created>1476962462949</created>
@@ -1280,11 +1281,18 @@
       <option name="project" value="LOCAL" />
       <updated>1479434842703</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="完成了HBase 的数据导入&#10;导入了600W条北京市的签到数据&#10;接下来完成HBase关键字检索部分的代码">
+      <created>1479452672960</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1479452672960</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110789000" />
+    <option name="totallyTimeSpent" value="116011000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1296,7 +1304,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-13" y="-13" width="2906" height="1566" extended-state="6" />
+    <frame x="-13" y="-13" width="2762" height="1770" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1307,13 +1315,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.264637" sideWeight="0.50289226" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2620321" sideWeight="0.49710774" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22670192" sideWeight="0.49710774" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925898" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19327731" sideWeight="0.49855387" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25125268" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13707946" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26490566" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1445283" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24982105" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1361,7 +1369,8 @@
     <MESSAGE value="完成了一部分的数据导出代码&#10;完成了从签到数据中获取所有数据的代码&#10;完成了从poi列表中获取所有签到在正确POI的签到数据&#10;&#10;未完成：导出" />
     <MESSAGE value="初始化了Hbase代码撰写环境" />
     <MESSAGE value="完成了HBASE连接部分的调试&#10;搭建完成HBase调试环境" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成了HBASE连接部分的调试&#10;搭建完成HBase调试环境" />
+    <MESSAGE value="完成了HBase 的数据导入&#10;导入了600W条北京市的签到数据&#10;接下来完成HBase关键字检索部分的代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成了HBase 的数据导入&#10;导入了600W条北京市的签到数据&#10;接下来完成HBase关键字检索部分的代码" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1808,7 +1817,7 @@
         <state relative-caret-position="153">
           <caret line="18" column="52" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="52" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1821,17 +1830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408">
-          <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
-          <folding>
-            <element signature="e#721#722#0" expanded="true" />
-            <element signature="e#765#766#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MysqlHbaseScanner/MysqlGetter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1840,52 +1838,6 @@
             <element signature="imports" expanded="true" />
             <element signature="e#510#511#0" expanded="true" />
             <element signature="e#542#543#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MysqlToHbase/HbaseQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="22" column="40" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1406#1454#1" expanded="true" />
-            <element signature="e#1719#1751#1" expanded="true" />
-            <element signature="e#2264#2296#0" expanded="true" />
-            <element signature="e#2442#2475#1" expanded="true" />
-            <element signature="e#2966#2998#0" expanded="true" />
-            <element signature="e#4368#4416#1" expanded="true" />
-            <element signature="e#4671#4719#1" expanded="true" />
-            <element signature="e#5015#5063#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MRCompetion/Output/main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MysqlToHbase/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MysqlToHbase/HbaseOperation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1931,9 +1883,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MysqlHbaseScanner/HbaseScan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
-          <folding />
+        <state relative-caret-position="-79">
+          <caret line="64" column="31" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MysqlToHbase/HbaseQL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="22" column="40" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1406#1454#1" expanded="true" />
+            <element signature="e#1719#1751#1" expanded="true" />
+            <element signature="e#2264#2296#0" expanded="true" />
+            <element signature="e#2442#2475#1" expanded="true" />
+            <element signature="e#2966#2998#0" expanded="true" />
+            <element signature="e#4368#4416#1" expanded="true" />
+            <element signature="e#4671#4719#1" expanded="true" />
+            <element signature="e#5015#5063#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MRCompetion/Output/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="25" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="31" column="92" selection-start-line="31" selection-start-column="92" selection-end-line="31" selection-end-column="92" />
+          <folding>
+            <element signature="e#697#698#0" expanded="true" />
+            <element signature="e#740#741#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MysqlToHbase/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MysqlToHbase/HbaseOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
