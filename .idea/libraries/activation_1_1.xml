@@ -1,0 +1,22 @@
+<component name="libraryTable">
+  <library name="activation-1.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/antisamy-1.4.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/aopalliance-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/apacheds-i18n-2.0.0-M15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/apacheds-kerberos-codec-2.0.0-M15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/api-asn1-api-1.0.0-M20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/api-util-1.0.0-M20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/asm-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/avro-1.7.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/batik-css-1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/batik-ext-1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/batik-util-1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/bsh-core-2.0b4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/commons-beanutils-1.7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
