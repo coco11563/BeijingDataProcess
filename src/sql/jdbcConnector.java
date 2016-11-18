@@ -1,7 +1,9 @@
 package sql;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Statement;
 import dataRead.CheckIn;
+import org.jruby.RubyProcess;
 import sinaGrab.poiInForm;
 
 import java.sql.BatchUpdateException;
@@ -10,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * Created by coco1 on 2016/10/19.
@@ -209,18 +210,36 @@ public class jdbcConnector {
         }
         return ret;
     }
-
+    /*
+    测试通过
+    对于600W数据15s左右完成检索
+     */
+    public static int getKeyWordNum(String keyword) {
+        String sql = "select count(*) from RawData.checkin a where a.content like '%"+keyword+"%'";
+        Connection conn = getConn();
+        PreparedStatement ps;
+        int ret = 0;
+        try {
+            ps = (PreparedStatement) conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            ret = rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
     public static void main(String args[]) throws SQLException {
-        Connection con = getConn();
+//        Connection con = getConn();
 //       List<String> get = getAllPoiid();
 //        System.out.println(get.size());
-       if (have("B2094450D56AA1FD429E",con)) {
-           System.out.println("right");
+//       if (have("B2094450D56AA1FD429E",con)) {
+//           System.out.println("right");
 //        Logger log = Logger.getLogger("1024");
 //        log.warning("hello 1024!!!");
 //        }
+        System.out.print(getKeyWordNum("我好爱你"));
     }
-}
 }
 
 
