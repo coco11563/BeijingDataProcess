@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="lucene-analyzers-common-6.3.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/lib/lucene/lucene-analyzers-common-6.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/lucene/lucene-core-6.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/lucene/lucene-demo-6.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/lucene/lucene-queryparser-6.3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

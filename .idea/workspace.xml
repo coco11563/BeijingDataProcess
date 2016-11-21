@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c221ac53-8ac6-4f94-ab88-e32ce7b69bbb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/generateFakeData/HBaseGenerater.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/generateFakeData/MysqlGenerater.java" />
+    <list default="true" id="c221ac53-8ac6-4f94-ab88-e32ce7b69bbb" name="Default" comment="完成了性能对比模块&#10;600W条数据这个数量级下&#10;MySQL大致需要11S完成筛选关键字&#10;HBase大致需要61S完成筛选关键字&#10;&#10;下一步通过生成数据去模拟千万级别的大数据">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/lucene/lucene-analyzers-common-6.3.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/lucene/lucene-core-6.3.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/lucene/lucene-demo-6.3.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/lucene/lucene-queryparser-6.3.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/lucene_analyzers_common_6_3_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/activation_1_1__2_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/activation_1_1__2_.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MysqlHbaseScanner/HbaseScan.java" afterPath="$PROJECT_DIR$/src/MysqlHbaseScanner/HbaseScan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MysqlToHbase/HbaseQL.java" afterPath="$PROJECT_DIR$/src/MysqlToHbase/HbaseQL.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sql/jdbcConnector.java" afterPath="$PROJECT_DIR$/src/sql/jdbcConnector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BeijingDataProcess.iml" afterPath="$PROJECT_DIR$/BeijingDataProcess.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/generateFakeData/HBaseGenerater.java" afterPath="$PROJECT_DIR$/src/generateFakeData/HBaseGenerater.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/generateFakeData/MysqlGenerater.java" afterPath="$PROJECT_DIR$/src/generateFakeData/MysqlGenerater.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -41,16 +45,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="MysqlGetter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MysqlHbaseScanner/MysqlGetter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="HbaseQL.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MysqlToHbase/HbaseQL.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -115,21 +109,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MysqlGenerater.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MysqlGenerater.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/generateFakeData/MysqlGenerater.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+            <state relative-caret-position="306">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HBaseGenerater.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HBaseGenerater.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/generateFakeData/HBaseGenerater.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+            <state relative-caret-position="306">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -225,6 +219,9 @@
         <option value="$PROJECT_DIR$/src/MysqlHbaseScanner/HbaseScan.java" />
         <option value="$PROJECT_DIR$/src/MysqlToHbase/HbaseQL.java" />
         <option value="$PROJECT_DIR$/src/sql/jdbcConnector.java" />
+        <option value="$PROJECT_DIR$/src/MysqlHbaseScanner/LuceneScanner.java" />
+        <option value="$PROJECT_DIR$/src/generateFakeData/HBaseGenerater.java" />
+        <option value="$PROJECT_DIR$/src/generateFakeData/MysqlGenerater.java" />
       </list>
     </option>
   </component>
@@ -360,6 +357,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="MysqlHbaseScanner" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BeijingDataProcess" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BeijingDataProcess" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="generateFakeData" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -406,25 +421,26 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/lib/solr-lucene-core-1.3.0.jar!/" />
     <property name="database.data.extractors.current" value="SQL Inserts" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="settings.editor.selected.configurable" value="http.proxy" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="findjar.last.used.dir" value="$PROJECT_DIR$/src/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\coco1\IdeaProjects\BeijingDataProcess\conf" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="MRCompetion.Output" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\coco1\IdeaProjects\BeijingDataProcess\src\lib\lucene" />
       <recent name="C:\Users\coco1\IdeaProjects\BeijingDataProcess\conf" />
       <recent name="C:\Users\coco1\IdeaProjects\BeijingDataProcess\src" />
       <recent name="C:\Users\coco1\IdeaProjects\BeijingDataProcess\src\MysqlToHbase" />
       <recent name="C:\Users\coco1\IdeaProjects\BeijingDataProcess\src\lib" />
-      <recent name="C:\Users\coco1\IdeaProjects\BeijingDataProcess\src\MRCompetion\StreamTestData" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="MRCompetion.Output" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\coco1\IdeaProjects\BeijingDataProcess\conf" />
     </key>
   </component>
   <component name="RunManager" selected="Application.jdbcConnector">
@@ -1057,7 +1073,7 @@
       <workItem from="1479089928482" duration="5420000" />
       <workItem from="1479110890623" duration="1856000" />
       <workItem from="1479389449160" duration="18928000" />
-      <workItem from="1479472280427" duration="8032000" />
+      <workItem from="1479472280427" duration="9995000" />
     </task>
     <task id="LOCAL-00001" summary="完成了第一部分的代码&#10;即从json数据中提取所需要 的字段，并将其存入到mysql数据库中&#10;这一步产生的数据用于第二步poi数据的补充以及之后数据的训练">
       <created>1476962462949</created>
@@ -1227,11 +1243,18 @@
       <option name="project" value="LOCAL" />
       <updated>1479459153189</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="完成了性能对比模块&#10;600W条数据这个数量级下&#10;MySQL大致需要11S完成筛选关键字&#10;HBase大致需要61S完成筛选关键字&#10;&#10;下一步通过生成数据去模拟千万级别的大数据">
+      <created>1479696950303</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1479696950303</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125737000" />
+    <option name="totallyTimeSpent" value="127700000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1244,7 +1267,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="2878" height="1538" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943013" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1254,12 +1277,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.264637" sideWeight="0.50289226" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26151446" sideWeight="0.49710774" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26151446" sideWeight="0.49710774" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925898" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19327731" sideWeight="0.49855387" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1928181" sideWeight="0.49855387" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2537961" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2537961" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1384671" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24982105" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1310,7 +1333,8 @@
     <MESSAGE value="完成了HBASE连接部分的调试&#10;搭建完成HBase调试环境" />
     <MESSAGE value="完成了HBase 的数据导入&#10;导入了600W条北京市的签到数据&#10;接下来完成HBase关键字检索部分的代码" />
     <MESSAGE value="修正了AutoFlush的一个小bug&#10;这个BUG会显著地影响上传的效率" />
-    <option name="LAST_COMMIT_MESSAGE" value="修正了AutoFlush的一个小bug&#10;这个BUG会显著地影响上传的效率" />
+    <MESSAGE value="完成了性能对比模块&#10;600W条数据这个数量级下&#10;MySQL大致需要11S完成筛选关键字&#10;HBase大致需要61S完成筛选关键字&#10;&#10;下一步通过生成数据去模拟千万级别的大数据" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成了性能对比模块&#10;600W条数据这个数量级下&#10;MySQL大致需要11S完成筛选关键字&#10;HBase大致需要61S完成筛选关键字&#10;&#10;下一步通过生成数据去模拟千万级别的大数据" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1323,18 +1347,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="dbDummy://dbtable:/7a8d0b76/5a55f659-9a30-4998-b23c-75323c1d8fad/rawdata.poistatus_0">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_91/src.zip!/java/lang/Throwable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="37179">
@@ -1544,6 +1556,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="709">
           <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1668,7 +1681,7 @@
         <state relative-caret-position="459">
           <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="25" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1777,18 +1790,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/generateFakeData/MysqlGenerater.java">
+    <entry file="file://$PROJECT_DIR$/src/MysqlHbaseScanner/LuceneScanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+        <state relative-caret-position="1530">
+          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/generateFakeData/HBaseGenerater.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+        <state relative-caret-position="306">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/generateFakeData/MysqlGenerater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1850,7 +1871,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

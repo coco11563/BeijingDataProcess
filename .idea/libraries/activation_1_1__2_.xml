@@ -123,10 +123,23 @@
       <root url="jar://$PROJECT_DIR$/src/lib/xom-1.2.5.jar!/" />
       <root url="jar://$PROJECT_DIR$/src/lib/xz-1.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/src/lib/zookeeper-3.4.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/lucene-1.4.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/lucene-core-2.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/solr-lucene-core-1.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/lucene-1.4.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/lucene-core-2.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/solr-lucene-core-1.3.0.jar!/" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/src/lib/lucene-1.4.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/lucene-core-2.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/solr-lucene-core-1.3.0.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/src/lib/jsr305-1.3.9.jar!/" />
     </SOURCES>
+    <jarDirectory url="jar://$PROJECT_DIR$/src/lib/lucene-1.4.3.jar!/" recursive="false" />
+    <jarDirectory url="jar://$PROJECT_DIR$/src/lib/lucene-core-2.9.0.jar!/" recursive="false" />
+    <jarDirectory url="jar://$PROJECT_DIR$/src/lib/solr-lucene-core-1.3.0.jar!/" recursive="false" />
   </library>
 </component>
