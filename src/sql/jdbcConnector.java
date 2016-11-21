@@ -213,20 +213,27 @@ public class jdbcConnector {
     /*
     测试通过
     对于600W数据15s左右完成检索
+    10788ms
      */
     public static int getKeyWordNum(String keyword) {
-        String sql = "select count(*) from RawData.checkin a where a.content like '%"+keyword+"%'";
+        long start = System.currentTimeMillis();
+        String sql = "select * from RawData.checkin a where a.content like '%"+keyword+"%'";
         Connection conn = getConn();
         PreparedStatement ps;
         int ret = 0;
         try {
             ps = (PreparedStatement) conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            rs.next();
-            ret = rs.getInt(1);
+            while(rs.next()) {
+                String content = rs.getString("content");
+                String[] ress = content.split(keyword);
+                ret += ress.length - 1;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
         return ret;
     }
     public static void main(String args[]) throws SQLException {
@@ -238,7 +245,7 @@ public class jdbcConnector {
 //        Logger log = Logger.getLogger("1024");
 //        log.warning("hello 1024!!!");
 //        }
-        System.out.print(getKeyWordNum("我好爱你"));
+        System.out.print(getKeyWordNum("我爱你"));
     }
 }
 

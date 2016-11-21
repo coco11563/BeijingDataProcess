@@ -10,6 +10,10 @@ import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.client.Scan;
+import org.apache.hadoop.hbase.filter.CompareFilter;
+import org.apache.hadoop.hbase.filter.Filter;
+import org.apache.hadoop.hbase.filter.SingleColumnValueFilter;
+import org.apache.hadoop.hbase.filter.SubstringComparator;
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable;
 import org.apache.hadoop.hbase.mapreduce.TableMapReduceUtil;
 import org.apache.hadoop.hbase.mapreduce.TableMapper;
@@ -19,17 +23,24 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 
+import static MysqlToHbase.HbaseQL.cfg;
+import static MysqlToHbase.HbaseQL.columnFamily;
+
 public class HbaseScan {
     private static final String keyword = "李志";
     public static void main(String[] args) {
         try{
-            Configuration config = HBaseConfiguration.create();
-            Job job = new Job(config,"ExampleSummary");
+            Job job = new Job(cfg,"ExampleSummary");
             job.setJarByClass(HbaseScan.class);     // class that contains mapper and reducer
+
+            SingleColumnValueFilter vf = new SingleColumnValueFilter(columnFamily.getBytes(),"content".getBytes(),
+                    CompareFilter.CompareOp.EQUAL,
+                    new SubstringComparator(keyword));
 
             Scan scan = new Scan();
             scan.setCaching(500);        // 1 is the default in Scan, which will be bad for MapReduce jobs
             scan.setCacheBlocks(false);  // don't set to true for MR jobs
+            scan.setFilter(vf);
             // set other scan attrs
             //scan.addColumn(family, qualifier);
             TableMapReduceUtil.initTableMapperJob(
@@ -60,9 +71,7 @@ public class HbaseScan {
         private Text text = new Text();
 
         public void map(ImmutableBytesWritable row, Result value, Context context) throws IOException, InterruptedException {
-            String ip = Bytes.toString(row.get()).split("-")[0];
-            String url = new String(value.getValue(Bytes.toBytes("info"), Bytes.toBytes("url")));
-            text.set(ip+"&"+url);
+            text.set("found");
             context.write(text, ONE);
         }
     }

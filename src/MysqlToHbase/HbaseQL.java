@@ -2,15 +2,16 @@ package MysqlToHbase;
 
 import dataRead.CheckIn;
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hbase.HBaseConfiguration;
-import org.apache.hadoop.hbase.HColumnDescriptor;
-import org.apache.hadoop.hbase.HTableDescriptor;
+import org.apache.hadoop.hbase.*;
 import org.apache.hadoop.hbase.client.*;
+import org.apache.hadoop.hbase.filter.*;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -19,10 +20,10 @@ import java.util.Set;
  * 提供了一部分基础的hbase操作方法
  *
  */
-class HbaseQL {
+public class HbaseQL {
     public static final String tableName = "checkinInform";
     private static Logger logger = Logger.getLogger(HbaseQL.class);
-    private static Configuration cfg = HBaseConfiguration.create();
+    public static Configuration cfg = HBaseConfiguration.create();
     public static final String columnFamily = "beijing_check_in";
     static HTable getTable() throws IOException {
         return new HTable(cfg, tableName);
@@ -154,5 +155,40 @@ class HbaseQL {
         }
         return true;
     }
+    //61233ms
 
+    public static int getKeyValue(String key) throws IOException {
+        long start = System.currentTimeMillis();
+        HTable tb = new HTable(cfg, "checkinInform");
+        SingleColumnValueFilter scvf = new SingleColumnValueFilter(
+                columnFamily.getBytes(),
+                "content".getBytes(),
+                CompareFilter.CompareOp.EQUAL,
+                new SubstringComparator(key));
+        scvf.setFilterIfMissing(false);
+        scvf.setLatestVersionOnly(true); // OK
+//        Filter kof = new KeyOnlyFilter(); // OK 返回所有的行，但值全是空
+//        List<Filter> filters = new ArrayList<Filter>();
+//        filters.add(kof);
+//        filters.add(scvf);
+//        FilterList fl = new FilterList(FilterList.Operator.MUST_PASS_ALL, filters);
+        Scan scan = new Scan();
+        scan.setCaching(500);        // 1 is the default in Scan, which will be bad for MapReduce jobs
+        scan.setFilter(scvf);
+        ResultScanner rs = tb.getScanner(scan);
+        int i = 0;
+        for (Result r : rs) {
+            String res = Bytes.toString(r.getValue(columnFamily.getBytes(), "content".getBytes()));
+            String[] ress = res.split(key);
+            i += ress.length - 1;
+        }
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
+        return i;
+    }
+
+    public static  void main(String args[]) throws IOException {
+        System.out.println(getKeyValue("我爱你"));
+        System.out.println(123123);
+    }
 }
