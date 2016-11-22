@@ -23,8 +23,8 @@ public class jdbcConnector {
     private static final String USER = "root";
     private static final String PASSWORD = "1234";
     private static final String DRIVER = "com.mysql.jdbc.Driver";
-    public static final String insertSql  = "insert into checkin (checkin,lat,lng,poiid,clock,content,datetime) values(?,?,?,?,?,?,?)";
-    public static final String insertPoiInform = "insert into poiinform (poiid,lat,lng,type) values(?,?,?,?)";
+    public static final String insertSql  = "insert into rawdata.checkin (checkin,lat,lng,poiid,clock,content,datetime) values(?,?,?,?,?,?,?)";
+    public static final String insertPoiInform = "insert into rawdata.poiinform (poiid,lat,lng,type) values(?,?,?,?)";
 
     /**
      * 获取数据库连接
@@ -210,10 +210,14 @@ public class jdbcConnector {
         }
         return ret;
     }
+
+
     /*
     测试通过
     对于600W数据15s左右完成检索
-    10788ms
+    10788ms - 6061117
+    27022ms,26777ms - 12041715
+
      */
     public static int getKeyWordNum(String keyword) {
         long start = System.currentTimeMillis();

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * Created by coco1 on 2016/11/18.
@@ -21,11 +22,12 @@ import java.util.Set;
  *
  */
 public class HbaseQL {
+    public static final LinkedBlockingDeque<CheckIn> rsBQ = new LinkedBlockingDeque<>(500000);
     public static final String tableName = "checkinInform";
     private static Logger logger = Logger.getLogger(HbaseQL.class);
     public static Configuration cfg = HBaseConfiguration.create();
     public static final String columnFamily = "beijing_check_in";
-    static HTable getTable() throws IOException {
+    public static HTable getTable() throws IOException {
         return new HTable(cfg, tableName);
     }
     public static void create(String tableName)throws IOException {
@@ -135,10 +137,20 @@ public class HbaseQL {
         Scan s = new Scan();
         ResultScanner rs = table.getScanner(s);
         for (Result r : rs) {
-            logger.info("Scan: " + r);
+            rsBQ.put(resultToCheckin(r));
         }
     }
-
+    private static CheckIn resultToCheckin(Result rs) {
+        assert rs != null;
+        return new CheckIn(
+                Bytes.toString(rs.getValue(columnFamily.getBytes(),"idstr".getBytes())),
+                Bytes.toString(rs.getValue(columnFamily.getBytes(),"content".getBytes())),
+                Bytes.toString(rs.getValue(columnFamily.getBytes(),"lat".getBytes())),
+                Bytes.toString(rs.getValue(columnFamily.getBytes(),"lng".getBytes())),
+                Bytes.toString(rs.getValue(columnFamily.getBytes(),"poiid".getBytes())),
+                Bytes.toString(rs.getValue(columnFamily.getBytes(),"datetime".getBytes())),
+                25);
+    }
     public static boolean delete(String tablename) throws IOException {
 
         @SuppressWarnings({ "deprecation", "resource" })
@@ -188,7 +200,15 @@ public class HbaseQL {
     }
 
     public static  void main(String args[]) throws IOException {
-        System.out.println(getKeyValue("我爱你"));
-        System.out.println(123123);
+//        System.out.println(getKeyValue("我爱你"));
+//        System.out.println(123123);
+
+
+        try {
+            scan("checkinInform");
+        } catch (Exception e) {
+            e.printStackTrace();
+      }
+
     }
 }
