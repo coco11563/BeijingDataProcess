@@ -217,6 +217,7 @@ public class jdbcConnector {
     对于600W数据15s左右完成检索
     10788ms - 6061117
     27022ms,26777ms - 12041715
+    41378ms - 20212532
 
      */
     public static int getKeyWordNum(String keyword) {
@@ -240,6 +241,14 @@ public class jdbcConnector {
         System.out.println(end - start);
         return ret;
     }
+
+    /**
+     *  10788ms - 6061117
+     *  27022ms,26777ms - 12041715
+     *  41378ms,40889ms - 20212532
+     * @param args
+     * @throws SQLException
+     */
     public static void main(String args[]) throws SQLException {
 //        Connection con = getConn();
 //       List<String> get = getAllPoiid();

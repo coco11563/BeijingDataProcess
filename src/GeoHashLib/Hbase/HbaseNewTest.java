@@ -6,32 +6,51 @@ import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
+import java.util.List;
 
 
 /**
  * Created by Administrator on 2016/11/23.
+ *
  */
 public class HbaseNewTest {
     public static void main(String args[]) {
         try {
             Configuration cfg = HBaseConfiguration.create();
             Connection conn = ConnectionFactory.createConnection(cfg);
-            Admin admin  = conn.getAdmin();
+//            Admin admin  = conn.getAdmin();
             TableName tableName = TableName.valueOf("user");
-            HTableMultiplexer hTableMultiplexer = new HTableMultiplexer(cfg,1);
-            Put p = new Put(Bytes.toBytes("TheRealMT"));
+            Table table = conn.getTable(tableName);
+//            HTableMultiplexer hTableMultiplexer = new HTableMultiplexer(cfg,1);
+            Put p = new Put(Bytes.toBytes("TheRealMT1"));
             p.addColumn(Bytes.toBytes("info"),
                     Bytes.toBytes("name"),
-                    Bytes.toBytes("FanFan"));
+                    Bytes.toBytes("JSJ"));
             p.addColumn(Bytes.toBytes("info"),
                     Bytes.toBytes("email"),
-                    Bytes.toBytes("FanFan@163.com"));
+                    Bytes.toBytes("JSJ@163.com"));
             p.addColumn(Bytes.toBytes("info"),
                     Bytes.toBytes("password"),
-                    Bytes.toBytes("FanFan123"));
-            hTableMultiplexer.put(tableName, p);
+                    Bytes.toBytes("XM123"));
+//            if (hTableMultiplexer.put(tableName, p))
+//                System.out.println("-----------yeah!----------");
+            table.put(p);
+            table.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+public boolean put(Put put, Configuration cfg, Connection conn, TableName tableName) {
+    try {
+        Table table = conn.getTable(tableName);
+        table.put(put);
+        return true;
+    } catch (IOException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+
 }

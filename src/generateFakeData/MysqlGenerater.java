@@ -62,6 +62,11 @@ public class MysqlGenerater {
                         }
                     }
                 } catch (InterruptedException e) {
+                    try {
+                        Thread.sleep(10000);
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
                     i ++;
                     e.printStackTrace();
                 } catch (SQLException e) {
