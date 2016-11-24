@@ -18,7 +18,7 @@ import static sql.jdbcConnector.getConn;
  * 500000row -> 6.12sec
  */
 public class CheckInReadThread extends Thread{
-    public volatile boolean shouldEnd = false;
+    private volatile boolean shouldEnd = false;
     private static int num;
     private static int limit = 50000;
     private static int cache = 500000;
@@ -72,11 +72,13 @@ public class CheckInReadThread extends Thread{
         }
     }
     private synchronized void addOffset() {
-        offset = offset + limit;
+        offset = offset + limit + 1;
     }
+
     private static String generateSql(int offset, int limit) {
         return "select DISTINCT * from rawdata.checkin LIMIT " +limit + " OFFSET " +offset ;
     }
+
     public static void main(String args[]) {
 
     }

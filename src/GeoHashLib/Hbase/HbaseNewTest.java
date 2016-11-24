@@ -1,4 +1,6 @@
 package GeoHashLib.Hbase;
+import MRCompetion.ThreadClass.CheckInReadThread;
+import dataRead.CheckIn;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
@@ -8,37 +10,35 @@ import org.apache.hadoop.hbase.util.Bytes;
 import java.io.IOException;
 import java.util.List;
 
+import static MRCompetion.ThreadClass.CheckInReadThread.cirBQ;
+
 
 /**
  * Created by Administrator on 2016/11/23.
  *
  */
 public class HbaseNewTest {
-    public static void main(String args[]) {
-        try {
-            Configuration cfg = HBaseConfiguration.create();
-            Connection conn = ConnectionFactory.createConnection(cfg);
-//            Admin admin  = conn.getAdmin();
-            TableName tableName = TableName.valueOf("user");
-            Table table = conn.getTable(tableName);
-//            HTableMultiplexer hTableMultiplexer = new HTableMultiplexer(cfg,1);
-            Put p = new Put(Bytes.toBytes("TheRealMT1"));
-            p.addColumn(Bytes.toBytes("info"),
-                    Bytes.toBytes("name"),
-                    Bytes.toBytes("JSJ"));
-            p.addColumn(Bytes.toBytes("info"),
-                    Bytes.toBytes("email"),
-                    Bytes.toBytes("JSJ@163.com"));
-            p.addColumn(Bytes.toBytes("info"),
-                    Bytes.toBytes("password"),
-                    Bytes.toBytes("XM123"));
-//            if (hTableMultiplexer.put(tableName, p))
-//                System.out.println("-----------yeah!----------");
-            table.put(p);
-            table.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static void main(String args[]) throws IOException {
+        CheckinDAO cd = new CheckinDAO();
+        CheckInReadThread cir = new CheckInReadThread();
+        int NullGetTimes = 0;
+        int n = 0;
+        while(true) {
+            if (NullGetTimes > 1000) {
+                break;
+            }
+            try {
+                NullGetTimes = 0;
+                Thread.sleep(1000);
+                cd.addCheckin(cirBQ.take());
+                n ++;
+            } catch (InterruptedException e) {
+                NullGetTimes++;
+                e.printStackTrace();
+            }
         }
+        System.out.println("seems all done");
+        System.out.println("Insert " + n + "Checkin Data");
     }
 
 public boolean put(Put put, Configuration cfg, Connection conn, TableName tableName) {

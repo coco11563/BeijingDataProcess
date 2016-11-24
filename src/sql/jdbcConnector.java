@@ -221,24 +221,28 @@ public class jdbcConnector {
 
      */
     public static int getKeyWordNum(String keyword) {
-        long start = System.currentTimeMillis();
-        String sql = "select * from checkInData.checkin a where a.content like '%"+keyword+"%'";
+        String query = "SELECT distinct * FROM checkInData.checkin a where a.content like '%" + keyword + "%'";
         Connection conn = getConn();
         PreparedStatement ps;
         int ret = 0;
+        int checkNum = 0;
+        long start = System.currentTimeMillis();
         try {
-            ps = (PreparedStatement) conn.prepareStatement(sql);
+            ps = (PreparedStatement) conn.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
+                checkNum ++;
                 String content = rs.getString("content");
                 String[] ress = content.split(keyword);
-                ret += ress.length - 1;
+                if (ress.length > 1)        System.out.println(content + " /t " + checkNum);
+                ret += (ress.length - 1);
             }
+            System.out.println(checkNum);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         long end = System.currentTimeMillis();
-        System.out.println(end - start);
+        System.out.println(end - start + "ms 完成关键字检索");
         return ret;
     }
 
@@ -258,7 +262,7 @@ public class jdbcConnector {
 //        Logger log = Logger.getLogger("1024");
 //        log.warning("hello 1024!!!");
 //        }
-        System.out.print(getKeyWordNum("我爱你"));
+        System.out.print(getKeyWordNum("原来"));
     }
 }
 
