@@ -19,12 +19,12 @@ import java.util.List;
 public class jdbcConnector {
     public static int dul = 0;
     public static int insert = 0;
-    private static final String DATABASEADDRESS = "jdbc:mysql://localhost:3306/rawdata";
+    private static final String DATABASEADDRESS = "jdbc:mysql://192.168.1.123:3306/checkInData";
     private static final String USER = "root";
     private static final String PASSWORD = "1234";
     private static final String DRIVER = "com.mysql.jdbc.Driver";
-    public static final String insertSql  = "insert into rawdata.checkin (checkin,lat,lng,poiid,clock,content,datetime) values(?,?,?,?,?,?,?)";
-    public static final String insertPoiInform = "insert into rawdata.poiinform (poiid,lat,lng,type) values(?,?,?,?)";
+    public static final String insertSql  = "insert into checkInData.checkin (checkin,lat,lng,poiid,clock,content,datetime) values(?,?,?,?,?,?,?)";
+    public static final String insertPoiInform = "insert into checkInData.poiinform (poiid,lat,lng,type) values(?,?,?,?)";
 
     /**
      * 获取数据库连接
@@ -149,7 +149,7 @@ public class jdbcConnector {
     public static Boolean have(String poiid, Connection connection) throws SQLException {
         PreparedStatement ps = null;
         int num = 0;
-        String sql = "select count(*) from rawdata.poiinform a WHERE a.poiid=\'" + poiid+"\'LIMIT 1";
+        String sql = "select count(*) from checkInData.poiinform a WHERE a.poiid=\'" + poiid+"\'LIMIT 1";
         try {
             ps = (PreparedStatement)connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -171,7 +171,7 @@ public class jdbcConnector {
 
     public static void delCheckin(String poiid, Connection connection) {
         PreparedStatement ps;
-        String sql = "delete from rawdata.checkin WHERE poiid=\'" + poiid + "\'";
+        String sql = "delete from checkInData.checkin WHERE poiid=\'" + poiid + "\'";
         try {
             ps = (PreparedStatement)connection.prepareStatement(sql);
             ps.executeUpdate();
@@ -190,7 +190,7 @@ public class jdbcConnector {
     public static List<String> getAllPoiid() {
         List<String> ret = new ArrayList<>();
         Connection conn = getConn();
-        String sql = "select DISTINCT poiid from rawdata.checkin";
+        String sql = "select DISTINCT poiid from checkInData.checkin";
         PreparedStatement pstmt;
         try {
             pstmt = (PreparedStatement)conn.prepareStatement(sql);
@@ -222,7 +222,7 @@ public class jdbcConnector {
      */
     public static int getKeyWordNum(String keyword) {
         long start = System.currentTimeMillis();
-        String sql = "select * from RawData.checkin a where a.content like '%"+keyword+"%'";
+        String sql = "select * from checkInData.checkin a where a.content like '%"+keyword+"%'";
         Connection conn = getConn();
         PreparedStatement ps;
         int ret = 0;
