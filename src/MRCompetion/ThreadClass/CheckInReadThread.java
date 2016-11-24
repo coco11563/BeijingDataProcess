@@ -76,7 +76,7 @@ public class CheckInReadThread extends Thread{
     }
 
     private static String generateSql(int offset, int limit) {
-        return "select DISTINCT * from rawdata.checkin LIMIT " +limit + " OFFSET " +offset ;
+        return "select DISTINCT * from checkin LIMIT " +limit + " OFFSET " +offset ;
     }
 
     public static void main(String args[]) {

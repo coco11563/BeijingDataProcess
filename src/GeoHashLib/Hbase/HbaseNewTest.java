@@ -18,9 +18,10 @@ import static MRCompetion.ThreadClass.CheckInReadThread.cirBQ;
  *
  */
 public class HbaseNewTest {
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws IOException, InterruptedException {
         CheckinDAO cd = new CheckinDAO();
         CheckInReadThread cir = new CheckInReadThread();
+        cir.start();
         int NullGetTimes = 0;
         int n = 0;
         while(true) {
@@ -29,11 +30,11 @@ public class HbaseNewTest {
             }
             try {
                 NullGetTimes = 0;
-                Thread.sleep(1000);
                 cd.addCheckin(cirBQ.take());
                 n ++;
             } catch (InterruptedException e) {
                 NullGetTimes++;
+                Thread.sleep(1000);
                 e.printStackTrace();
             }
         }
