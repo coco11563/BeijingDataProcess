@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c221ac53-8ac6-4f94-ab88-e32ce7b69bbb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseNewTest.java" afterPath="$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseNewTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java" afterPath="$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sql/jdbcConnector.java" afterPath="$PROJECT_DIR$/src/sql/jdbcConnector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java" afterPath="$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -144,11 +142,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheckInReadThread.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CheckInReadThread.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2430">
-              <caret line="80" column="4" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
+            <state relative-caret-position="-1206">
+              <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
               <folding>
                 <element signature="e#774#775#0" expanded="true" />
                 <element signature="e#813#814#0" expanded="true" />
@@ -157,11 +155,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheckinDAO.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CheckinDAO.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="37" column="60" selection-start-line="37" selection-start-column="60" selection-end-line="37" selection-end-column="60" />
+            <state relative-caret-position="342">
+              <caret line="45" column="88" selection-start-line="45" selection-start-column="88" selection-end-line="45" selection-end-column="88" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -257,9 +255,9 @@
         <option value="$PROJECT_DIR$/src/lib/hadoop-hdfs-2.5.1.jar!/org/apache/hadoop/hdfs/web/JsonUtil.class" />
         <option value="$PROJECT_DIR$/src/GeoHashLib/GeoHash.java" />
         <option value="$PROJECT_DIR$/src/sql/jdbcConnector.java" />
-        <option value="$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java" />
         <option value="$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseNewTest.java" />
         <option value="$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java" />
+        <option value="$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java" />
       </list>
     </option>
   </component>
@@ -1204,7 +1202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1479968930161</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="数据库成功转移&#10;以后还是要用配置文件会比较方便&#10;使用SQL语句获取关键字数量还是报了一个错误&#10;可能是因为数据正在导入的缘故&#10;等数据导入完后开始进行HBase写入">
+      <created>1479987062109</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1479987062109</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1266,7 +1271,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="完成了一部分的数据抓取与处理工作" />
     <MESSAGE value="完成数据抓取部分&#10;判断是否是北京部分&#10;准备完成抓取的主函数部分" />
     <MESSAGE value="完成了对抓取点的区域判断&#10;正在为节约baidukey想方法" />
     <MESSAGE value="完成了节约百度key的方法&#10;第二部分的抓取完成&#10;开始第三部分代码的编写" />
@@ -1291,7 +1295,8 @@
     <MESSAGE value="加入了一下lucene的jar包" />
     <MESSAGE value="完成CheckinDAO" />
     <MESSAGE value="修改了数据库连接文件&#10;修改至192.168.1.123:checkInData.checkin" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改了数据库连接文件&#10;修改至192.168.1.123:checkInData.checkin" />
+    <MESSAGE value="数据库成功转移&#10;以后还是要用配置文件会比较方便&#10;使用SQL语句获取关键字数量还是报了一个错误&#10;可能是因为数据正在导入的缘故&#10;等数据导入完后开始进行HBase写入" />
+    <option name="LAST_COMMIT_MESSAGE" value="数据库成功转移&#10;以后还是要用配置文件会比较方便&#10;使用SQL语句获取关键字数量还是报了一个错误&#10;可能是因为数据正在导入的缘故&#10;等数据导入完后开始进行HBase写入" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1642,16 +1647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="37" column="60" selection-start-line="37" selection-start-column="60" selection-end-line="37" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseNewTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -1664,11 +1659,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2430">
-          <caret line="80" column="4" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
+        <state relative-caret-position="-1206">
+          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
           <folding>
             <element signature="e#774#775#0" expanded="true" />
             <element signature="e#813#814#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="45" column="88" selection-start-line="45" selection-start-column="88" selection-end-line="45" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

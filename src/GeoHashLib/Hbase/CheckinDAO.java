@@ -43,6 +43,7 @@ public class CheckinDAO {
         return g;
     }
     private static Put mkPut(CheckIn checkIn) {
+        System.out.println(Bytes.toString(mkIdstr(checkIn)) + " " + checkIn.toString());
         Put p = new Put(mkIdstr(checkIn));
         p.addColumn(FAMILY_NAME,ID_COL,Bytes.toBytes(checkIn.getIdstr()));
         p.addColumn(FAMILY_NAME, LAT_COL, Bytes.toBytes(checkIn.getLat()));
