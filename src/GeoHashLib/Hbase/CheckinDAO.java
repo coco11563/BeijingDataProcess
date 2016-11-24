@@ -82,4 +82,27 @@ public class CheckinDAO {
             puts.clear();
         }
     }
+
+    private static class Checkin extends CheckIn {
+        private Checkin(Result result) {
+            this(result.getValue(FAMILY_NAME,ID_COL),
+                    result.getValue(FAMILY_NAME, CONTENT_COL),
+                    result.getValue(FAMILY_NAME, LAT_COL),
+                    result.getValue(FAMILY_NAME, LNG_COL),
+                    result.getValue(FAMILY_NAME, POIID_COL),
+                    result.getValue(FAMILY_NAME, DATETIME_COL),
+                    result.getValue(FAMILY_NAME, CLOCK_COL));
+        }
+        private Checkin(byte[] idstr, byte[] content, byte[] lat,
+                        byte[] lng, byte[] poiid, byte[] date, byte[] clock) {
+            this(Bytes.toString(idstr),Bytes.toString(content),
+                    Bytes.toString(lat), Bytes.toString(lng),
+                    Bytes.toString(poiid),  Bytes.toString(date),
+                    Integer.parseInt(Bytes.toString(clock)));
+        }
+        private Checkin(String idstr, String content, String lat,
+                        String lng, String poiid, String date, int clock) {
+            super(idstr, content, lat, lng, poiid, date, clock);
+        }
+    }
 }
