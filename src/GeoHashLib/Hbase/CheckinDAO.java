@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class CheckinDAO {
     private static final LinkedList<Put> puts = new LinkedList<>();
-    private static final Configuration CFG = HBaseConfiguration.create();
+    static final Configuration CFG = HBaseConfiguration.create();
     private static final byte[] TABLE_NAME = Bytes.toBytes("checkinInform");
     private static final byte[] FAMILY_NAME = Bytes.toBytes("sinaWeibo");
     private static final byte[] ID_COL = Bytes.toBytes("idstr");
@@ -43,7 +43,7 @@ public class CheckinDAO {
         return g;
     }
     private static Put mkPut(CheckIn checkIn) {
-        System.out.println(Bytes.toString(mkIdstr(checkIn)) + " " + checkIn.toString());
+        System.out.println(Bytes.toString(mkIdstr(checkIn)) + "-" + checkIn.toString());
         Put p = new Put(mkIdstr(checkIn));
         p.addColumn(FAMILY_NAME,ID_COL,Bytes.toBytes(checkIn.getIdstr()));
         p.addColumn(FAMILY_NAME, LAT_COL, Bytes.toBytes(checkIn.getLat()));
