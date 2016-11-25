@@ -200,15 +200,15 @@ public class HbaseQL {
     }
 
     public static  void main(String args[]) throws IOException {
-//        System.out.println(getKeyValue("我爱你"));
-//        System.out.println(123123);
+        System.out.println(getKeyValue("我爱你"));
+        System.out.println(123123);
 
-
-        try {
-            scan("checkinInform");
-        } catch (Exception e) {
-            e.printStackTrace();
-      }
+//
+//        try {
+//            scan("checkinInform");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//      }
 
     }
 }

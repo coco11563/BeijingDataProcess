@@ -221,7 +221,7 @@ public class jdbcConnector {
 
      */
     public static int getKeyWordNum(String keyword) {
-        String query = "SELECT distinct * FROM checkInData.checkin a where a.content like '%" + keyword + "%'";
+        String query = "SELECT distinct * FROM checkInData.checkin a where a.content like \'%原来%\'";
         Connection conn = getConn();
         PreparedStatement ps;
         int ret = 0;

@@ -15,6 +15,7 @@ import static sql.jdbcConnector.*;
 
 /**
  * Created by coco1 on 2016/11/21.
+ *
  */
 public class MysqlGenerater {
     public static void main(String args[]) throws InterruptedException {
@@ -32,7 +33,7 @@ public class MysqlGenerater {
     private static class insertionThread extends Thread{
         private final List<CheckIn> temp = new ArrayList<>();
         private String s;
-        public insertionThread(String s) {
+        insertionThread(String s) {
             this.s = s;
         }
         @Override
