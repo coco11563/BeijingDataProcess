@@ -15,7 +15,7 @@ import static MRCompetion.ThreadClass.CheckInReadThread.cirBQ;
 
 /**
  * Created by Administrator on 2016/11/23.
- *
+ * 一个比较靠谱的Mysql to HBase
  */
 public class HbaseNewTest {
     public static void main(String args[]) throws IOException, InterruptedException {

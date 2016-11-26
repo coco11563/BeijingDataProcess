@@ -9,6 +9,7 @@ import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,8 +17,8 @@ import java.util.List;
  * Created by coco1 on 2016/11/23.
  *
  */
-public class CheckinDAO {
-    private static final LinkedList<Put> puts = new LinkedList<>();
+class CheckinDAO {
+    private static LinkedList<Put> puts = new LinkedList<>();
     static final Configuration CFG = HBaseConfiguration.create();
     private static final byte[] TABLE_NAME = Bytes.toBytes("checkinInform");
     private static final byte[] FAMILY_NAME = Bytes.toBytes("sinaWeibo");
@@ -34,7 +35,7 @@ public class CheckinDAO {
     public CheckinDAO(Connection connection){
         this.conn = connection;
     }
-    public CheckinDAO() throws IOException {
+    CheckinDAO() throws IOException {
         this.conn = ConnectionFactory.createConnection(CFG);
     }
     private static Get mkGet(String id) {
@@ -72,15 +73,16 @@ public class CheckinDAO {
         try {
             Table table = conn.getTable(tableName);
             table.put(put);
+            table.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void addCheckin(CheckIn c) {
+    void addCheckin(CheckIn c) {
         puts.add(mkPut(c));
         if (puts.size() > 1000) {
             put(puts, CFG, conn, TableName.valueOf(TABLE_NAME));
-            puts.clear();
+            puts = new LinkedList<>();
         }
     }
 
