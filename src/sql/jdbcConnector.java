@@ -221,7 +221,7 @@ public class jdbcConnector {
 
      */
     public static int getKeyWordNum(String keyword) {
-        String query = "SELECT distinct * FROM checkInData.checkin a where a.content like \'%原来%\'";
+        String query = "SELECT distinct content FROM checkin where content like \'%原来%\'";
         Connection conn = getConn();
         PreparedStatement ps;
         int ret = 0;
@@ -229,13 +229,14 @@ public class jdbcConnector {
         long start = System.currentTimeMillis();
         try {
             ps = (PreparedStatement) conn.prepareStatement(query);
+            System.out.println(ps.getPreparedSql());
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 checkNum ++;
-                String content = rs.getString("content");
+                String content = rs.getString(1);
                 String[] ress = content.split(keyword);
-                if (ress.length > 1)        System.out.println(content + " /t " + checkNum);
-                ret += (ress.length - 1);
+                System.out.println(content + " \t " + checkNum);
+
             }
             System.out.println(checkNum);
         } catch (SQLException e) {
