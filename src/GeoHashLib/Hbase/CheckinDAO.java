@@ -7,6 +7,7 @@ import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
+import org.apache.hadoop.hbase.util.Threads;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -73,14 +74,15 @@ class CheckinDAO {
         try {
             Table table = conn.getTable(tableName);
             table.put(put);
+            Thread.sleep(1000);
             table.close();
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
     void addCheckin(CheckIn c) {
         puts.add(mkPut(c));
-        if (puts.size() > 1000) {
+        if (puts.size() > 10000) {
             put(puts, CFG, conn, TableName.valueOf(TABLE_NAME));
             puts = new LinkedList<>();
         }

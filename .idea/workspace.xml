@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c221ac53-8ac6-4f94-ab88-e32ce7b69bbb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_40_bin.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sql/jdbcConnector.java" afterPath="$PROJECT_DIR$/src/sql/jdbcConnector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java" afterPath="$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -32,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="HbaseNewTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HbaseNewTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseNewTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+            <state relative-caret-position="756">
+              <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -55,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheckinDAO.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CheckinDAO.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="696">
-              <caret line="81" column="14" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
+            <state relative-caret-position="431">
+              <caret line="84" column="31" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -207,12 +206,12 @@
         <option value="$PROJECT_DIR$/src/GeoHashLib/Hbase/Split.java" />
         <option value="$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseNewTest.java" />
         <option value="$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java" />
-        <option value="$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java" />
         <option value="$PROJECT_DIR$/src/generateFakeData/MysqlGenerater.java" />
         <option value="$PROJECT_DIR$/src/GeoHashLib/GeoHashSearch.java" />
         <option value="$PROJECT_DIR$/src/MysqlToHbase/HbaseQL.java" />
         <option value="$PROJECT_DIR$/src/sql/jdbcConnector.java" />
         <option value="$PROJECT_DIR$/src/GeoHashLib/GeoHash.java" />
+        <option value="$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java" />
       </list>
     </option>
   </component>
@@ -1190,7 +1189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1480139076263</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="继续修正jdbc中的一些问题">
+      <created>1480142169340</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1480142169340</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1216,7 +1222,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.264637" sideWeight="0.50289226" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963493" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23076923" sideWeight="0.49710774" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23076923" sideWeight="0.49710774" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925898" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1928181" sideWeight="0.49855387" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1252,7 +1258,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="完成了第三部分的代码工作&#10;准备debug" />
     <MESSAGE value="修改了一些bug&#10;在某些微博中若是发现了不存在的poi则会删除这些点" />
     <MESSAGE value="修缮了一些BUG&#10;移除了发现不存在的点就删除这个设定" />
     <MESSAGE value="先使用多线程操作JDBC来对比查看下效率" />
@@ -1277,7 +1282,8 @@
     <MESSAGE value="修正了一下插入时将会有一些输出" />
     <MESSAGE value="添加了使用ExecutorService的多线程读取Hbase 的代码" />
     <MESSAGE value="updating  mysql jar pack" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating  mysql jar pack" />
+    <MESSAGE value="继续修正jdbc中的一些问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="继续修正jdbc中的一些问题" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1595,17 +1601,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-39">
-          <caret line="58" column="42" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
-          <folding>
-            <element signature="e#774#775#0" expanded="true" />
-            <element signature="e#813#814#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sql/jdbcConnector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="545">
@@ -1622,16 +1617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="81" column="14" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GeoHashLib/GeoHash.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
@@ -1640,11 +1625,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-39">
+          <caret line="58" column="42" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+          <folding>
+            <element signature="e#774#775#0" expanded="true" />
+            <element signature="e#813#814#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseNewTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+        <state relative-caret-position="756">
+          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="84" column="31" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
