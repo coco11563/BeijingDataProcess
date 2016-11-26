@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c221ac53-8ac6-4f94-ab88-e32ce7b69bbb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java" afterPath="$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseNewTest.java" afterPath="$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseNewTest.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -31,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="HbaseNewTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HbaseNewTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseNewTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+            <state relative-caret-position="864">
+              <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -54,7 +54,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheckinDAO.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CheckinDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="431">
@@ -204,7 +204,6 @@
         <option value="$PROJECT_DIR$/src/lib/hadoop-hdfs-2.5.1.jar!/org/apache/hadoop/hdfs/web/JsonUtil.class" />
         <option value="$PROJECT_DIR$/src/GeoHashLib/Hbase/poorScaner.java" />
         <option value="$PROJECT_DIR$/src/GeoHashLib/Hbase/Split.java" />
-        <option value="$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseNewTest.java" />
         <option value="$PROJECT_DIR$/src/MRCompetion/ThreadClass/CheckInReadThread.java" />
         <option value="$PROJECT_DIR$/src/generateFakeData/MysqlGenerater.java" />
         <option value="$PROJECT_DIR$/src/GeoHashLib/GeoHashSearch.java" />
@@ -212,6 +211,7 @@
         <option value="$PROJECT_DIR$/src/sql/jdbcConnector.java" />
         <option value="$PROJECT_DIR$/src/GeoHashLib/GeoHash.java" />
         <option value="$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java" />
+        <option value="$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseNewTest.java" />
       </list>
     </option>
   </component>
@@ -1196,7 +1196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1480142169340</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="调整写入的频率防止出现远程过于繁忙的情况&#10;在每次写入后会延迟1s再进行操作">
+      <created>1480144952237</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1480144952237</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1258,7 +1265,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="修改了一些bug&#10;在某些微博中若是发现了不存在的poi则会删除这些点" />
     <MESSAGE value="修缮了一些BUG&#10;移除了发现不存在的点就删除这个设定" />
     <MESSAGE value="先使用多线程操作JDBC来对比查看下效率" />
     <MESSAGE value="正在撰写jdbc方法" />
@@ -1283,7 +1289,8 @@
     <MESSAGE value="添加了使用ExecutorService的多线程读取Hbase 的代码" />
     <MESSAGE value="updating  mysql jar pack" />
     <MESSAGE value="继续修正jdbc中的一些问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="继续修正jdbc中的一些问题" />
+    <MESSAGE value="调整写入的频率防止出现远程过于繁忙的情况&#10;在每次写入后会延迟1s再进行操作" />
+    <option name="LAST_COMMIT_MESSAGE" value="调整写入的频率防止出现远程过于繁忙的情况&#10;在每次写入后会延迟1s再进行操作" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1636,14 +1643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseNewTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
@@ -1651,6 +1650,14 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseNewTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>

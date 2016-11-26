@@ -21,6 +21,7 @@ public class HbaseNewTest {
     public static void main(String args[]) throws IOException, InterruptedException {
         CheckinDAO cd = new CheckinDAO();
         CheckInReadThread cir = new CheckInReadThread();
+        CheckIn c;
         cir.start();
         int NullGetTimes = 0;
         int n = 0;
@@ -30,7 +31,8 @@ public class HbaseNewTest {
             }
             try {
                 NullGetTimes = 0;
-                cd.addCheckin(cirBQ.take());
+                c = cirBQ.take();
+                cd.addCheckin(c);
                 n ++;
             } catch (InterruptedException e) {
                 NullGetTimes++;
