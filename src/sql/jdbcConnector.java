@@ -1,7 +1,9 @@
 package sql;
+import GeoHashLib.GeoHash;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import dataRead.CheckIn;
 import org.jruby.RubyProcess;
 import sinaGrab.poiInForm;
@@ -19,11 +21,11 @@ import java.util.List;
 public class jdbcConnector {
     public static int dul = 0;
     public static int insert = 0;
-    private static final String DATABASEADDRESS = "jdbc:mysql://192.168.1.123:3306/checkInData";
+    private static final String DATABASEADDRESS = "jdbc:mysql://localhost:3306/";
     private static final String USER = "root";
     private static final String PASSWORD = "1234";
     private static final String DRIVER = "com.mysql.jdbc.Driver";
-    public static final String insertSql  = "insert into checkInData.checkin (checkin,lat,lng,poiid,clock,content,datetime) values(?,?,?,?,?,?,?)";
+    public static final String insertSql  = "insert into RawData.checkin (checkin,lat,lng,poiid,clock,content,datetime,id) values(?,?,?,?,?,?,?,?)";
     public static final String insertPoiInform = "insert into checkInData.poiinform (poiid,lat,lng,type) values(?,?,?,?)";
 
     /**
@@ -54,7 +56,7 @@ public class jdbcConnector {
     public static int checkInInsert(CheckIn checkIn) {
         Connection conn = getConn();
         int i = 0;
-        String sql = "insert into checkin (checkin,lat,lng,poiid,clock,content) values(?,?,?,?,?,?)";
+        String sql = "insert into checkin (checkin,lat,lng,poiid,clock,content,id) values(?,?,?,?,?,?,?)";
         PreparedStatement pstmt;
         try {
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
@@ -64,6 +66,7 @@ public class jdbcConnector {
             pstmt.setString(4, checkIn.getPoiid());
             pstmt.setInt(5, checkIn.getTime());
             pstmt.setString(6, checkIn.getContent());
+            pstmt.setString(7,mkId(checkIn));
             i = pstmt.executeUpdate();
             pstmt.close();
             conn.close();
@@ -71,6 +74,10 @@ public class jdbcConnector {
             e.printStackTrace();
         }
         return i;
+    }
+
+    private static String mkId(CheckIn c) {
+        return new GeoHash(Double.parseDouble(c.getLat()),Double.parseDouble(c.getLng())).getGeoHashBase32() + "_" + c.getIdstr();
     }
 
     /**
@@ -89,6 +96,7 @@ public class jdbcConnector {
                 pstmt.setInt(5, checkIn.getTime());
                 pstmt.setString(6, checkIn.getContent());
                 pstmt.setString(7,checkIn.getDate());
+                pstmt.setString(8,mkId(checkIn));
                 pstmt.addBatch();
                 i ++;
                 if (i % 10000 == 0){
@@ -99,10 +107,12 @@ public class jdbcConnector {
                 e.printStackTrace();
             }
         }
-        pstmt.executeBatch();
-        connection.commit();
-
-
+        try {
+            pstmt.executeBatch();
+            connection.commit();
+        } catch (BatchUpdateException | MySQLIntegrityConstraintViolationException e ) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -221,7 +231,7 @@ public class jdbcConnector {
 
      */
     public static int getKeyWordNum(String keyword) {
-        String query = "SELECT distinct content FROM checkin where content like \'%原来%\'";
+        String query = "SELECT distinct content FROM rawdata.checkin where content like \'%原来%\'";
         Connection conn = getConn();
         PreparedStatement ps;
         int ret = 0;
@@ -235,6 +245,7 @@ public class jdbcConnector {
                 checkNum ++;
                 String content = rs.getString(1);
                 String[] ress = content.split(keyword);
+                ret += ress.length - 1;
                 System.out.println(content + " \t " + checkNum);
 
             }

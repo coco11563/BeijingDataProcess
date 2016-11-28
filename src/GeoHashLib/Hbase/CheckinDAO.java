@@ -21,7 +21,7 @@ import java.util.List;
 class CheckinDAO {
     private static LinkedList<Put> puts = new LinkedList<>();
     static final Configuration CFG = HBaseConfiguration.create();
-    private static final byte[] TABLE_NAME = Bytes.toBytes("checkinInform");
+    static final byte[] TABLE_NAME = Bytes.toBytes("checkinInform");
     static final byte[] FAMILY_NAME = Bytes.toBytes("sinaWeibo");
     private static final byte[] ID_COL = Bytes.toBytes("idstr");
     private static final byte[] LAT_COL = Bytes.toBytes("lat");

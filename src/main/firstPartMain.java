@@ -26,7 +26,7 @@ public class firstPartMain {
         connection.setAutoCommit(false);
         PreparedStatement ps = (PreparedStatement) connection.prepareStatement(insertSql);
         List<CheckIn> temp;
-        List<File> li = getFilePath(new File("G:\\OneDrive\\文档\\北京市微博数据"));
+        List<File> li = getFilePath(new File("F:\\OneDrive\\文档\\北京市微博数据"));
         for (File f : li) {
             temp = new LinkedList<>();
             System.out.println("开始读取:" + f.toString());
