@@ -1,17 +1,17 @@
-package MysqlHbaseScanner;
+package GeoHashLib.Hbase;
 
 /**
  * Created by coco1 on 2016/11/18.
  */
 import java.io.IOException;
 
+import org.apache.commons.configuration.ConfigurationFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.client.Scan;
 import org.apache.hadoop.hbase.filter.CompareFilter;
-import org.apache.hadoop.hbase.filter.Filter;
 import org.apache.hadoop.hbase.filter.SingleColumnValueFilter;
 import org.apache.hadoop.hbase.filter.SubstringComparator;
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable;
@@ -29,6 +29,7 @@ import static MysqlToHbase.HbaseQL.columnFamily;
 public class HbaseScan {
     private static final String keyword = "李志";
     public static void main(String[] args) {
+        Configuration cfg = HBaseConfiguration.create();
         try{
             Job job = new Job(cfg,"ExampleSummary");
             job.setJarByClass(HbaseScan.class);     // class that contains mapper and reducer

@@ -22,14 +22,14 @@ class CheckinDAO {
     private static LinkedList<Put> puts = new LinkedList<>();
     static final Configuration CFG = HBaseConfiguration.create();
     private static final byte[] TABLE_NAME = Bytes.toBytes("checkinInform");
-    private static final byte[] FAMILY_NAME = Bytes.toBytes("sinaWeibo");
+    static final byte[] FAMILY_NAME = Bytes.toBytes("sinaWeibo");
     private static final byte[] ID_COL = Bytes.toBytes("idstr");
     private static final byte[] LAT_COL = Bytes.toBytes("lat");
     private static final byte[] LNG_COL = Bytes.toBytes("lng");
     private static final byte[] POIID_COL = Bytes.toBytes("poiid");
     private static final byte[] CLOCK_COL = Bytes.toBytes("clock");
     private static final byte[] DATETIME_COL = Bytes.toBytes("datetime");
-    private static final byte[] CONTENT_COL = Bytes.toBytes("content");
+    static final byte[] CONTENT_COL = Bytes.toBytes("content");
 
     private Connection conn;
 
