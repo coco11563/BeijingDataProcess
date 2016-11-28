@@ -41,7 +41,7 @@ public class HbaseScannerTest {
                 context.getCounter(Counters.KEYWORDS).increment(keynum - 1);
             }
         }
-        public static void main(String args) throws IOException, ClassNotFoundException, InterruptedException {
+        public static void main(String args[]) throws IOException, ClassNotFoundException, InterruptedException {
             Configuration conf = HBaseConfiguration.create();
             Job job = new Job(conf, "KeyWords Counter");
             job.setJarByClass(HbaseScannerTest.class);
