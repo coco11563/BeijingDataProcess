@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c221ac53-8ac6-4f94-ab88-e32ce7b69bbb" name="Default" comment="">
+    <list default="true" id="c221ac53-8ac6-4f94-ab88-e32ce7b69bbb" name="Default" comment="修正 connecting to 0.0.0.0:8032的错误">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/yarn-site.xml" afterPath="$PROJECT_DIR$/conf/yarn-site.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseScannerTest.java" afterPath="$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseScannerTest.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -52,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HbaseScannerTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HbaseScannerTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseScannerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="43" column="45" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
+            <state relative-caret-position="324">
+              <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,7 +62,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="yarn-site.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="yarn-site.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf/yarn-site.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-216">
@@ -1220,7 +1218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1480149596869</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="修正 connecting to 0.0.0.0:8032的错误">
+      <created>1480340688175</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1480340688175</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1282,7 +1287,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="先使用多线程操作JDBC来对比查看下效率" />
     <MESSAGE value="正在撰写jdbc方法" />
     <MESSAGE value="完成checkinreadthread" />
     <MESSAGE value="完成了另外两个线程，开始进行写入测试" />
@@ -1307,7 +1311,8 @@
     <MESSAGE value="继续修正jdbc中的一些问题" />
     <MESSAGE value="调整写入的频率防止出现远程过于繁忙的情况&#10;在每次写入后会延迟1s再进行操作" />
     <MESSAGE value="继续为修改OOM错误" />
-    <option name="LAST_COMMIT_MESSAGE" value="继续为修改OOM错误" />
+    <MESSAGE value="修正 connecting to 0.0.0.0:8032的错误" />
+    <option name="LAST_COMMIT_MESSAGE" value="修正 connecting to 0.0.0.0:8032的错误" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1596,21 +1601,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseScannerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="43" column="45" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/conf/yarn-site.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-216">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/HbaseScannerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
