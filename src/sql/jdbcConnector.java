@@ -2,10 +2,8 @@ package sql;
 import GeoHashLib.GeoHash;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.Statement;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import dataRead.CheckIn;
-import org.jruby.RubyProcess;
 import sinaGrab.poiInForm;
 
 import java.sql.BatchUpdateException;

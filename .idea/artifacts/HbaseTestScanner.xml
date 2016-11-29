@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="HbaseTestScanner">
+    <output-path>$PROJECT_DIR$/out/artifacts/HbaseTestScanner</output-path>
+    <root id="archive" name="HbaseTestScanner.jar" />
+  </artifact>
+</component>

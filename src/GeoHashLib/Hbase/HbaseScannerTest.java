@@ -12,8 +12,6 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.output.NullOutputFormat;
-import org.apache.zookeeper.Op;
-import org.yaml.snakeyaml.nodes.ScalarNode;
 
 import java.io.IOException;
 
@@ -23,10 +21,35 @@ import java.io.IOException;
  * 关键字检索类的MR形式
  */
 public class HbaseScannerTest {
-    private static String keyword = "李志";
+
+    public static void main(String args[]) throws IOException, ClassNotFoundException, InterruptedException {
+        Configuration conf = HBaseConfiguration.create();
+        conf.set("mapreduce.app-submission.cross-platform", "true");
+        Job job = new Job(conf, "KeyWords Counter");
+        job.setJarByClass(HbaseScannerTest.class);
+        Scan scan = new Scan();
+        scan.addColumn(CheckinDAO.FAMILY_NAME, CheckinDAO.CONTENT_COL);
+        scan.setCaching(500);
+        scan.setCacheBlocks(false);
+        TableMapReduceUtil.initTableMapperJob(
+                Bytes.toString(CheckinDAO.TABLE_NAME),
+                scan,
+                Mapper.class,
+                ImmutableBytesWritable.class,
+                Result.class,
+                job,
+                true //addDependencyJars upload HBase jars and jars for any of the configured job classes via the distributed cache (tmpjars).
+        );
+        job.setOutputFormatClass(NullOutputFormat.class);
+        job.setNumReduceTasks(0);
+        System.exit(job.waitForCompletion(true) ? 0 : 1);
+    }
+
+
     public static class Mapper extends TableMapper<Text, LongWritable> {
-        public static enum Counters{ROWS, KEYWORDS};
+        static enum Counters{ROWS, KEYWORDS};
         private int containsKeywords(String msg) {
+            String keyword = "李志";
             String[] ress  = msg.split(keyword);
             return ress.length;
         }
@@ -41,23 +64,6 @@ public class HbaseScannerTest {
                 context.getCounter(Counters.KEYWORDS).increment(keynum - 1);
             }
         }
-        public static void main(String args[]) throws IOException, ClassNotFoundException, InterruptedException {
-            Configuration conf = HBaseConfiguration.create();
-            Job job = new Job(conf, "KeyWords Counter");
-            job.setJarByClass(HbaseScannerTest.class);
-            Scan scan = new Scan();
-            scan.addColumn(CheckinDAO.FAMILY_NAME, CheckinDAO.CONTENT_COL);
-            TableMapReduceUtil.initTableMapperJob(
-                    Bytes.toString(CheckinDAO.TABLE_NAME),
-                    scan,
-                    Mapper.class,
-                    ImmutableBytesWritable.class,
-                    Result.class,
-                    job
-            );
-            job.setOutputFormatClass(NullOutputFormat.class);
-            job.setNumReduceTasks(0);
-            System.exit(job.waitForCompletion(true) ? 0 : 1);
-        }
+
     }
 }
