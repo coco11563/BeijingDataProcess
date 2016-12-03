@@ -19,7 +19,7 @@ import java.util.List;
 public class jdbcConnector {
     public static int dul = 0;
     public static int insert = 0;
-    private static final String DATABASEADDRESS = "jdbc:mysql://localhost:3306/";
+    private static final String DATABASEADDRESS = "jdbc:mysql://192.168.1.80:3306/";
     private static final String USER = "root";
     private static final String PASSWORD = "1234";
     private static final String DRIVER = "com.mysql.jdbc.Driver";
@@ -227,9 +227,10 @@ public class jdbcConnector {
     27022ms,26777ms - 12041715
     41378ms - 20212532
 
+    192328ms - 600w
      */
     public static int getKeyWordNum(String keyword) {
-        String query = "SELECT distinct content FROM rawdata.checkin where content like \'%原来%\'";
+        String query = "SELECT distinct content FROM rawdata.checkin where content like \'%fuck%\'";
         Connection conn = getConn();
         PreparedStatement ps;
         int ret = 0;
@@ -256,6 +257,34 @@ public class jdbcConnector {
         return ret;
     }
 
+    public static int getKeyWordNum(String keyword, int LIMIT, int OFFSET) {
+        String query = "SELECT distinct content FROM rawdata.checkin where content like \'%fuck%\' LIMIT "+OFFSET +" , " + LIMIT;
+        Connection conn = getConn();
+        PreparedStatement ps;
+        int ret = 0;
+        int checkNum = 0;
+        long start = System.currentTimeMillis();
+        try{
+            ps = (PreparedStatement) conn.prepareStatement(query);
+            System.out.println(ps.getPreparedSql());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                checkNum ++;
+                String content = rs.getString(1);
+                String[] ress = content.split(keyword);
+                ret += ress.length - 1;
+//                System.out.println(content + " \t " + checkNum);
+
+            }
+            System.out.println(checkNum);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        long end = System.currentTimeMillis();
+//        System.out.println(end - start + "ms 完成关键字检索");
+        return ret;
+    }
+
     /**
      *  10788ms - 6061117
      *  27022ms,26777ms - 12041715
@@ -272,7 +301,7 @@ public class jdbcConnector {
 //        Logger log = Logger.getLogger("1024");
 //        log.warning("hello 1024!!!");
 //        }
-        System.out.print(getKeyWordNum("原来"));
+        System.out.print(getKeyWordNum("原来",100000,1));
     }
 }
 
