@@ -10,7 +10,7 @@ public class GeoHashSearch {
     public static String searchByR(double r) {
         double level;
         double R = 2 * r;
-        double l = (int)(Math.log(360 / R)) * 2 - 1;
+        int l = (int)(Math.log(360 / R)) * 2 - 1;
         double len = 180 / (Math.pow(2, (l * 2 - 1)));
         if (len >= R) level = l / 2;
         else level = l;

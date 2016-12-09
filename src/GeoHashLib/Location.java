@@ -2,6 +2,8 @@ package GeoHashLib;
 
 /**
  * Created by Administrator on 2016/11/23.
+ *
+ * .
  */
 public class Location {
     public static final double MINLAT = -90;

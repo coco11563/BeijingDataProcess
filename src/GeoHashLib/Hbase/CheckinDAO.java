@@ -23,7 +23,7 @@ class CheckinDAO {
     static final Configuration CFG = HBaseConfiguration.create();
     static final byte[] TABLE_NAME = Bytes.toBytes("checkinInform");
     static final byte[] FAMILY_NAME = Bytes.toBytes("sinaWeibo");
-    private static final byte[] ID_COL = Bytes.toBytes("idstr");
+    static final byte[] ID_COL = Bytes.toBytes("idstr");
     private static final byte[] LAT_COL = Bytes.toBytes("lat");
     private static final byte[] LNG_COL = Bytes.toBytes("lng");
     private static final byte[] POIID_COL = Bytes.toBytes("poiid");

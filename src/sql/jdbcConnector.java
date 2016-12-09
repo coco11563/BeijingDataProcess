@@ -301,7 +301,7 @@ public class jdbcConnector {
 //        Logger log = Logger.getLogger("1024");
 //        log.warning("hello 1024!!!");
 //        }
-        System.out.print(getKeyWordNum("原来",100000,1));
+        System.out.print(getKeyWordNum("fuck"));
     }
 }
 

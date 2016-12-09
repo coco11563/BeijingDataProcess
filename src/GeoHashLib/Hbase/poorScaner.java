@@ -1,10 +1,11 @@
 package GeoHashLib.Hbase;
 
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.*;
-import org.apache.hadoop.hbase.filter.CompareFilter;
-import org.apache.hadoop.hbase.filter.SingleColumnValueFilter;
-import org.apache.hadoop.hbase.filter.SubstringComparator;
+import org.apache.hadoop.hbase.filter.*;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
@@ -39,7 +40,14 @@ public class poorScaner {
     public poorScaner(int numSplit) {
         poorScaner.numSplit = numSplit;
     }
-    private static int numSplit;
+    private static int numSplit = 16;
+
+    /**
+     * number of key words is 1618
+     * Mysql all done in 603233 ms
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
     public void SqlMaker() throws ExecutionException, InterruptedException {
         Split[] splits = split(1, 6000000, numSplit);
         List<Future<?>> workers = new ArrayList<Future<?>>(numSplit);
@@ -65,7 +73,7 @@ public class poorScaner {
                 Connection connection = ConnectionFactory.createConnection(CFG);
                 Table table = connection.getTable(TableName.valueOf("checkinInform"));
                 int ret = 0;
-                Scan s = new Scan(Bytes.toBytes(split.start), Bytes.toBytes(split.end));
+                Scan s = new Scan(Bytes.toBytes(split.start), Bytes.toBytes(split.end));//zhege zenme ban!
                 s.setCaching(500);
                     SingleColumnValueFilter scvf = new SingleColumnValueFilter(
                             CheckinDAO.FAMILY_NAME,
@@ -97,8 +105,9 @@ public class poorScaner {
         System.out.println("number of key words is "+resultnum);
         es.shutdown();
     }
+    private static final byte[] POSTFIX = new byte[] { 0x00 };
 
-    public Split[] split(int startrow, int endrow, int splitNum) {
+    public static Split[] split(int startrow, int endrow, int splitNum) {
         Split[] ret = new Split[splitNum];
         int per = (endrow - startrow) / splitNum;
         for (int i = 0 ; i < splitNum - 1 ; i ++) {
@@ -108,17 +117,58 @@ public class poorScaner {
         ret[splitNum - 1] = new Split(startrow, endrow);
         return ret;
     }
+    public static void countRows(String tableName,byte[] lastRow) throws IOException {
+        Split[] splits = split(1, 6000000, numSplit);
+        Connection connection = ConnectionFactory.createConnection(CFG);
+        Table table = connection.getTable(TableName.valueOf(tableName));
+        Filter filter = new PageFilter(15);
+        int totalRows = 0;
+        int i = 0;
+        while(true) {
+            Scan scan = new Scan();
+            scan.setFilter(filter);
+            if (lastRow != null) {
+                byte[] startRow = Bytes.add(lastRow, POSTFIX);
+//                System.out.println("Start row:" + Bytes.toStringBinary(startRow) + ", " + Bytes.toInt(startRow));
+                scan.setStartRow(startRow);
+            }
+            ResultScanner  scanner = table.getScanner(scan);
+            int localRows = 0;
+            Result result;
+            while ((result = scanner.next()) != null) {
+//                System.out.println(localRows ++ + ": " + result);
+                localRows += 1;
+                totalRows += 1;
+                lastRow = result.getRow();
+                if (totalRows == splits[i].end) {
+                    i ++;
+                    System.out.println("====----dangdangdang----====" + i);
+                    System.out.println(result.getColumnCells(CheckinDAO.FAMILY_NAME,CheckinDAO.ID_COL));
+                }
+            }
+            scanner.close();
+            if (localRows == 0) break;
+        }
+        System.out.println("total rows " + totalRows);
+        table.close();
+        connection.close();
+    }
+    public static void useGetter() {
+        Configuration conf = HBaseConfiguration.create();
+//        Get getter = new Get(conf);
+    }
     public static void main(String args[]) throws InterruptedException, ExecutionException, IOException {
-        long start = System.currentTimeMillis();
-        poorScaner p = new poorScaner(16);
-        p.workMaker();
-        long end = System.currentTimeMillis();
-        System.out.println("HBase all done in " + (end - start) + " ms");
-        start = System.currentTimeMillis();
-        p = new poorScaner(8);
-        p.SqlMaker();
-        end = System.currentTimeMillis();
-        System.out.println("Mysql all done in " + (end - start) + " ms");
+//        long start = System.currentTimeMillis();
+//        poorScaner p = new poorScaner(16);
+//        p.workMaker();
+//        long end = System.currentTimeMillis();
+//        System.out.println("HBase all done in " + (end - start) + " ms");
+//        start = System.currentTimeMillis();
+//        p = new poorScaner(8);
+//        p.SqlMaker();
+//        end = System.currentTimeMillis();
+//        System.out.println("Mysql all done in " + (end - start) + " ms");
+        countRows("checkinInform",Bytes.toBytes(5980590));
     }
 
 }
