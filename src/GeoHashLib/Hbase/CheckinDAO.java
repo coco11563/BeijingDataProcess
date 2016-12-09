@@ -18,11 +18,11 @@ import java.util.List;
  * Created by coco1 on 2016/11/23.
  *
  */
-class CheckinDAO {
+public class CheckinDAO {
     private static LinkedList<Put> puts = new LinkedList<>();
     static final Configuration CFG = HBaseConfiguration.create();
-    static final byte[] TABLE_NAME = Bytes.toBytes("checkinInform");
-    static final byte[] FAMILY_NAME = Bytes.toBytes("sinaWeibo");
+    public static final byte[] TABLE_NAME = Bytes.toBytes("checkinInform");
+    public static final byte[] FAMILY_NAME = Bytes.toBytes("sinaWeibo");
     static final byte[] ID_COL = Bytes.toBytes("idstr");
     private static final byte[] LAT_COL = Bytes.toBytes("lat");
     private static final byte[] LNG_COL = Bytes.toBytes("lng");
