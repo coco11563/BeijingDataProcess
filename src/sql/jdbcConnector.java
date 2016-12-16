@@ -19,7 +19,7 @@ import java.util.List;
 public class jdbcConnector {
     public static int dul = 0;
     public static int insert = 0;
-    private static final String DATABASEADDRESS = "jdbc:mysql://192.168.1.80:3306/";
+    private static final String DATABASEADDRESS = "jdbc:mysql://192.168.1.80:3306?characterEncoding=utf8&useSSL=true";
     private static final String USER = "root";
     private static final String PASSWORD = "1234";
     private static final String DRIVER = "com.mysql.jdbc.Driver";
@@ -258,7 +258,7 @@ public class jdbcConnector {
     }
 
     public static int getKeyWordNum(String keyword, int LIMIT, int OFFSET) {
-        String query = "SELECT distinct content FROM rawdata.checkin where content like \'%fuck%\' LIMIT "+OFFSET +" , " + LIMIT;
+        String query = "SELECT distinct content FROM rawdata.checkin where content like \'%"+keyword+"%\' LIMIT "+OFFSET +" , " + LIMIT;
         Connection conn = getConn();
         PreparedStatement ps;
         int ret = 0;

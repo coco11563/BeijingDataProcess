@@ -1,7 +1,6 @@
 package GeoHashLib.HighPerformanceHbaseAcess;
 
 import GeoHashLib.Hbase.CheckinDAO;
-import io.netty.buffer.ByteBuf;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.client.Get;
