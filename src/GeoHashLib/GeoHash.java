@@ -17,9 +17,14 @@ public class GeoHash {
      */
     public GeoHash(double lat, double lng) {
         location = new Location(lat, lng);
+        this.hashLength = 12;
         setMinLatLng();
     }
-    private int hashLength = 12; //经纬度转化为geohash长度
+    public GeoHash(double lat, double lng, int hashLength) {
+        location = new Location(lat, lng);
+        sethashLength(hashLength);
+    }
+    private int hashLength; //经纬度转化为geohash长度
     private int latLength = 30; //纬度转化为二进制长度
     private int lngLength = 30; //经度转化为二进制长度
 

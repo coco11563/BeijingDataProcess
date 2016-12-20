@@ -24,8 +24,8 @@ public class CheckinDAO {
     public static final byte[] TABLE_NAME = Bytes.toBytes("checkinInform");
     public static final byte[] FAMILY_NAME = Bytes.toBytes("sinaWeibo");
     static final byte[] ID_COL = Bytes.toBytes("idstr");
-    private static final byte[] LAT_COL = Bytes.toBytes("lat");
-    private static final byte[] LNG_COL = Bytes.toBytes("lng");
+    static final byte[] LAT_COL = Bytes.toBytes("lat");
+    static final byte[] LNG_COL = Bytes.toBytes("lng");
     private static final byte[] POIID_COL = Bytes.toBytes("poiid");
     private static final byte[] CLOCK_COL = Bytes.toBytes("clock");
     private static final byte[] DATETIME_COL = Bytes.toBytes("datetime");

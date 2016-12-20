@@ -227,33 +227,35 @@ public class jdbcConnector {
     27022ms,26777ms - 12041715
     41378ms - 20212532
 
+
+    REGEXP 164.011S
+    LIKE
     192328ms - 600w
      */
-    public static int getKeyWordNum(String keyword) {
-        String query = "SELECT distinct content FROM rawdata.checkin where content like \'%fuck%\'";
+    public static int getKeyWordNum(String regex, String keyword) throws SQLException {
         Connection conn = getConn();
+        String query = "SELECT distinct content FROM rawdata.checkin where id like \'"+regex+"%\' and content like \'%" + keyword + "%\'";
         PreparedStatement ps;
         int ret = 0;
-        int checkNum = 0;
-        long start = System.currentTimeMillis();
+
         try {
             ps = (PreparedStatement) conn.prepareStatement(query);
             System.out.println(ps.getPreparedSql());
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
-                checkNum ++;
-                String content = rs.getString(1);
+                String content = rs.getString("content");
                 String[] ress = content.split(keyword);
                 ret += ress.length - 1;
-                System.out.println(content + " \t " + checkNum);
 
             }
-            System.out.println(checkNum);
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            conn.close();
         }
-        long end = System.currentTimeMillis();
-        System.out.println(end - start + "ms 完成关键字检索");
+//        long end = System.currentTimeMillis();
+//        System.out.println(end - start + "ms 完成关键字检索");
+
         return ret;
     }
 
@@ -301,7 +303,7 @@ public class jdbcConnector {
 //        Logger log = Logger.getLogger("1024");
 //        log.warning("hello 1024!!!");
 //        }
-        System.out.print(getKeyWordNum("fuck"));
+//        System.out.print(getKeyWordNum("fuck"));
     }
 }
 

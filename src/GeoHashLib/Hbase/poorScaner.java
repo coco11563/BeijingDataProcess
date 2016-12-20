@@ -1,5 +1,6 @@
 package GeoHashLib.Hbase;
 
+import GeoHashLib.GeoHash;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.hbase.HBaseConfiguration;
@@ -7,13 +8,17 @@ import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.filter.*;
 import org.apache.hadoop.hbase.util.Bytes;
+import org.joni.Matcher;
+import org.joni.Regex;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
+import java.util.regex.Pattern;
 
 import static GeoHashLib.Hbase.CheckinDAO.CFG;
+import static GeoHashLib.Hbase.GeohaseQuery.muiltiThreadQuery;
 import static sql.jdbcConnector.getKeyWordNum;
 
 /**
@@ -40,7 +45,7 @@ public class poorScaner {
     public poorScaner(int numSplit) {
         poorScaner.numSplit = numSplit;
     }
-    private static int numSplit = 16;
+    static int numSplit = 16;
     String[] countDownRow = {
             "w7ujumhbbk8b_3746905597555205",
             "wx4dhwcevbgm_3732318542090834",
@@ -82,7 +87,7 @@ public class poorScaner {
         System.out.println("number of key words is "+resultnum);
         es.shutdown();
     }
-    public void workMaker(String key, int sign) throws IOException, ExecutionException, InterruptedException {
+    public void workMaker(String key, int sign, double lat, double lon, int hashDepth) throws IOException, ExecutionException, InterruptedException {
 //        switch (sign) {
 //            case 1: {
 //                Split[] splits = split(1, 6000000, numSplit);
@@ -127,39 +132,63 @@ public class poorScaner {
 //            }
 //            break;
 //            case 2: {
+        List<String> geohash = new GeoHash(lat, lon, hashDepth).getGeoHashBase32For9();
+        String regex = regexGeoMaker(geohash);
                 List<Future<?>> workers = new ArrayList<Future<?>>(numSplit);
                 ExecutorService es = Executors.newFixedThreadPool(numSplit);
                 for (int i = 0 ; i < countDownRow.length - 1 ; i ++) {
                     final String startl = countDownRow[i];
                     final String endl = countDownRow[i + 1];
                     workers.add(es.submit(() -> {
-                        Connection connection = ConnectionFactory.createConnection(CFG);
-                        Table table = connection.getTable(TableName.valueOf("checkinInform"));
-                        int ret = 0;
-                        System.out.println(startl + " - " + endl);
-                        Scan s = new Scan(Bytes.toBytes(startl),Bytes.toBytes(endl));//zhege zenme ban!
-                        s.setCaching(5000);
-                        SingleColumnValueFilter scvf = new SingleColumnValueFilter(
-                                CheckinDAO.FAMILY_NAME,
-                                CheckinDAO.CONTENT_COL,
-                                CompareFilter.CompareOp.GREATER_OR_EQUAL,
-                                new SubstringComparator(key));
-                        s.setFilter(scvf);
-                        try {
-                            ResultScanner rs = table.getScanner(s);
-                            for (Result r : rs) {
-                                String rg = Bytes.toString(r.getValue(CheckinDAO.FAMILY_NAME, CheckinDAO.CONTENT_COL));
+//                        int ret = 0;
+//                        try {
+//                            ret = muiltiThreadQuery(39.9208460000,116.4165150000,Integer.MAX_VALUE,key, startl, endl);
+//                                } catch (IOException e) {
+//                                    e.printStackTrace();
+//                                }
+//                                return ret;
+//                            }
+
+                                Pattern pattern = Pattern.compile(regex);
+                                Configuration CFG = HBaseConfiguration.create();
+                                CFG.set("zookeeper.session.timeout.ms","5000000");
+                                Connection connection = ConnectionFactory.createConnection(CFG);
+                                Table table = connection.getTable(TableName.valueOf("checkinInform"));
+                                int ret = 0;
+                                System.out.println(startl + " - " + endl);
+                                Scan s = new Scan(Bytes.toBytes(startl), Bytes.toBytes(endl));//zhege zenme ban!
+                                s.setCaching(5000);
+                                SingleColumnValueFilter scvf = new SingleColumnValueFilter(
+                                        CheckinDAO.FAMILY_NAME,
+                                        CheckinDAO.CONTENT_COL,
+                                        CompareFilter.CompareOp.GREATER_OR_EQUAL,
+                                        new SubstringComparator(key));
+
+                                Filter rowFilter = new RowFilter(CompareFilter.CompareOp.GREATER_OR_EQUAL, new RegexStringComparator(regex));
+                                FilterList fl = new FilterList(FilterList.Operator.MUST_PASS_ALL);
+                                fl.addFilter(rowFilter);
+//                                fl.addFilter(scvf);
+
+                                s.setFilter(fl);
+                                try {
+                                    ResultScanner rs = table.getScanner(s);
+                                    for (Result r : rs) {
+                                        String rg = Bytes.toString(r.getValue(CheckinDAO.FAMILY_NAME, CheckinDAO.CONTENT_COL));
+                                        String hash = Bytes.toString(r.getRow());
+//                                        System.out.println(hash);
 //                            System.out.println(rg)  ;
-                                ret += rg.split(key).length - 1;
+//                                        if (pattern.matcher(hash).matches()) {
+                                            System.out.println(hash);
+                                            ret += rg.split(key).length - 1;
+//                                        }
+                                    }
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                return ret;
                             }
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } finally {
-                            table.close();
-                            connection.close();
-                        }
-                        return ret;
-                    }));
+
+                    ));
                 }
                 int resultnum = 0;
                 for (Future<?> f : workers) {
@@ -171,6 +200,20 @@ public class poorScaner {
 //            }
 //            break;
 //        }
+    }
+    private static String regexGeoMaker(List<String> hashList) {
+        StringBuilder sb = new StringBuilder();
+        int length = hashList.size();
+        int i = 0;
+        for (String s : hashList) {
+            sb.append("^").append(s);
+            if (i < length - 1) {
+                i ++;
+                sb.append("|");
+            }
+        }
+        System.out.println(sb.toString());
+        return sb.toString();
     }
     private static final byte[] POSTFIX = new byte[] { 0x00 };
 
@@ -290,14 +333,14 @@ public class poorScaner {
     public static void main(String args[]) throws InterruptedException, ExecutionException, IOException {
         long start = System.currentTimeMillis();
         poorScaner p = new poorScaner(16);
-        p.workMaker( "李志",2);
+        p.workMaker( "北京",2,39.9208460000  , 116.4165150000, 7);
         long end = System.currentTimeMillis();
         System.out.println("HBase all done in " + (end - start) + " ms");
-        start = System.currentTimeMillis();
-        p = new poorScaner(8);
-        p.SqlMaker("李志");
-        end = System.currentTimeMillis();
-        System.out.println("Mysql all done in " + (end - start) + " ms");
+//        start = System.currentTimeMillis();
+//        p = new poorScaner(8);
+//        p.SqlMaker("北京");
+//        end = System.currentTimeMillis();
+//        System.out.println("Mysql all done in " + (end - start) + " ms");
 
 
 
