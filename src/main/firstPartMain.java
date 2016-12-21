@@ -21,12 +21,16 @@ import static sql.jdbcConnector.insertSql;
  * Created by coco1 on 2016/10/19.
  */
 public class firstPartMain {
+    public static String[] cityname = {"沧州市","承德市", "邯郸市", "衡水市", "廊坊市","石家庄市", "唐山市", "天津市", "邢台市", "张家口市"};
     public static void main(String args[]) throws IOException, JSONException, SQLException {
         Connection connection = getConn();
         connection.setAutoCommit(false);
         PreparedStatement ps = (PreparedStatement) connection.prepareStatement(insertSql);
         List<CheckIn> temp;
-        List<File> li = getFilePath(new File("F:\\OneDrive\\文档\\北京市微博数据"));
+        List<File> li = new LinkedList<>();
+        for (String s  : cityname) {
+            li.addAll(getFilePath(new File("F:\\OneDrive\\文档\\河北省微博数据\\" + s + File.separator)));
+        }
         for (File f : li) {
             temp = new LinkedList<>();
             System.out.println("开始读取:" + f.toString());

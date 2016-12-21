@@ -7,14 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c221ac53-8ac6-4f94-ab88-e32ce7b69bbb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dataRead/ant.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/ant.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/ant_1_7_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dataRead/getCityData.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/guava_20_0.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BeijingDataProcess.iml" afterPath="$PROJECT_DIR$/BeijingDataProcess.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataRead/Util.java" afterPath="$PROJECT_DIR$/src/dataRead/Util.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/firstPartMain.java" afterPath="$PROJECT_DIR$/src/main/firstPartMain.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sql/jdbcConnector.java" afterPath="$PROJECT_DIR$/src/sql/jdbcConnector.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -35,6 +30,30 @@
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - RawData@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - RawData@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="checkin" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -57,15 +76,15 @@
       <file leaf-file-name="jdbcConnector.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sql/jdbcConnector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1662">
-              <caret line="76" column="26" lean-forward="false" selection-start-line="76" selection-start-column="26" selection-end-line="76" selection-end-column="26" />
+            <state relative-caret-position="-306">
+              <caret line="21" column="73" lean-forward="false" selection-start-line="21" selection-start-column="73" selection-end-line="21" selection-end-column="73" />
               <folding>
-                <marker date="1482219599374" expanded="true" signature="1917:1999" ph="insert into checkin... " />
-                <marker date="1482219599374" expanded="true" signature="5588:5669" ph="select count... poiinform" />
-                <marker date="1482219599374" expanded="true" signature="6302:6363" ph="delete from " />
-                <marker date="1482219599374" expanded="true" signature="6851:6897" ph="select DISTI... checkin" />
-                <marker date="1482219599374" expanded="true" signature="7957:8069" ph="SELECT disti... checkin" />
-                <marker date="1482219599374" expanded="true" signature="8863:8965" ph="SELECT disti... checkin" />
+                <marker date="1482223003375" expanded="true" signature="1909:1991" ph="insert into checkin... " />
+                <marker date="1482223003375" expanded="true" signature="5580:5661" ph="select count... poiinform" />
+                <marker date="1482223003375" expanded="true" signature="6294:6355" ph="delete from " />
+                <marker date="1482223003375" expanded="true" signature="6843:6889" ph="select DISTI... checkin" />
+                <marker date="1482223003375" expanded="true" signature="7949:8061" ph="SELECT disti... checkin" />
+                <marker date="1482223003375" expanded="true" signature="8855:8957" ph="SELECT disti... checkin" />
               </folding>
             </state>
           </provider>
@@ -110,9 +129,34 @@
       <file leaf-file-name="firstPartMain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/firstPartMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+            <state relative-caret-position="385">
+              <caret line="23" column="69" lean-forward="true" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CheckinDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="668">
+              <caret line="85" column="62" lean-forward="false" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rawdata.checkin" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/7a8d0b76/5a55f659-9a30-4998-b23c-75323c1d8fad/rawdata.checkin">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -132,26 +176,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="39">
               <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mapred-site.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/conf/mapred-site.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="23" column="4" lean-forward="false" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hbase-site.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/conf/hbase-site.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4131">
-              <caret line="81" column="38" lean-forward="false" selection-start-line="81" selection-start-column="38" selection-end-line="81" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -183,7 +207,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/MRCompetion/ThreadClass/PoiGetThread.java" />
         <option value="$PROJECT_DIR$/src/MRCompetion/Competion.java" />
         <option value="dbtable:/7a8d0b76/5a55f659-9a30-4998-b23c-75323c1d8fad/rawdata.poiinform" />
         <option value="$PROJECT_DIR$/src/MRCompetion/Output/IntoMRCheckin.java" />
@@ -230,10 +253,11 @@
         <option value="$PROJECT_DIR$/src/GeoHashLib/Hbase/poorScaner.java" />
         <option value="$PROJECT_DIR$/conf/mapred-site.xml" />
         <option value="$PROJECT_DIR$/conf/hbase-site.xml" />
-        <option value="$PROJECT_DIR$/src/sql/jdbcConnector.java" />
         <option value="$PROJECT_DIR$/src/GeoHashLib/Hbase/GeohaseQuery.java" />
         <option value="$PROJECT_DIR$/src/dataRead/getCityData.java" />
         <option value="$PROJECT_DIR$/src/dataRead/Util.java" />
+        <option value="$PROJECT_DIR$/src/sql/jdbcConnector.java" />
+        <option value="$PROJECT_DIR$/src/main/firstPartMain.java" />
       </list>
     </option>
   </component>
@@ -247,10 +271,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-11" />
-    <option name="y" value="2" />
-    <option name="width" value="2900" />
-    <option name="height" value="1549" />
+    <option name="x" value="-13" />
+    <option name="y" value="-13" />
+    <option name="width" value="2906" />
+    <option name="height" value="1566" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -607,7 +631,7 @@
       <recent name="GeoHashLib.Hbase" />
     </key>
   </component>
-  <component name="RunManager" selected="JAR Application.ant-1.7.1.jar">
+  <component name="RunManager" selected="Application.firstPartMain">
     <configuration default="false" name="HbaseScannerTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -648,26 +672,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="GeoHashSearch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="GeoHashLib.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="GeoHashLib.GeoHashSearch" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="BeijingDataProcess" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="false" name="GeohaseQuery" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -691,6 +695,26 @@
     <configuration default="false" name="ant-1.7.1.jar" type="JarApplication" factoryName="JAR Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="JAR_PATH" value="$PROJECT_DIR$/src/lib/ant-1.7.1.jar" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="firstPartMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="main.firstPartMain" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="BeijingDataProcess" />
       <envs />
       <method />
     </configuration>
@@ -1086,17 +1110,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.HbaseScannerTest" />
       <item index="1" class="java.lang.String" itemvalue="Application.poorScaner" />
-      <item index="2" class="java.lang.String" itemvalue="Application.GeoHashSearch" />
-      <item index="3" class="java.lang.String" itemvalue="Application.GeohaseQuery" />
-      <item index="4" class="java.lang.String" itemvalue="JAR Application.ant-1.7.1.jar" />
+      <item index="2" class="java.lang.String" itemvalue="Application.GeohaseQuery" />
+      <item index="3" class="java.lang.String" itemvalue="JAR Application.ant-1.7.1.jar" />
+      <item index="4" class="java.lang.String" itemvalue="Application.firstPartMain" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JAR Application.ant-1.7.1.jar" />
-        <item index="1" class="java.lang.String" itemvalue="Application.GeohaseQuery" />
-        <item index="2" class="java.lang.String" itemvalue="Application.poorScaner" />
-        <item index="3" class="java.lang.String" itemvalue="Application.HbaseScannerTest" />
-        <item index="4" class="java.lang.String" itemvalue="Application.GeoHashSearch" />
+        <item index="0" class="java.lang.String" itemvalue="Application.firstPartMain" />
+        <item index="1" class="java.lang.String" itemvalue="JAR Application.ant-1.7.1.jar" />
+        <item index="2" class="java.lang.String" itemvalue="Application.GeohaseQuery" />
+        <item index="3" class="java.lang.String" itemvalue="Application.poorScaner" />
+        <item index="4" class="java.lang.String" itemvalue="Application.HbaseScannerTest" />
       </list>
     </recent_temporary>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -1167,7 +1191,7 @@
       <workItem from="1480048243165" duration="8538000" />
       <workItem from="1480335889496" duration="257000" />
       <workItem from="1481270875175" duration="1070000" />
-      <workItem from="1482219655966" duration="696000" />
+      <workItem from="1482219655966" duration="4458000" />
     </task>
     <task id="LOCAL-00001" summary="完成了第一部分的代码&#10;即从json数据中提取所需要 的字段，并将其存入到mysql数据库中&#10;这一步产生的数据用于第二步poi数据的补充以及之后数据的训练">
       <created>1476962462949</created>
@@ -1449,11 +1473,25 @@
       <option name="project" value="LOCAL" />
       <updated>1481869902423</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="加入了按照关键字读取文件的class&#10;开始吧文件读入Mysql中">
+      <created>1482220404622</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1482220404622</updated>
+    </task>
+    <task id="LOCAL-00042" summary="加入了按照关键字读取文件的class&#10;开始吧文件读入Mysql中">
+      <created>1482291417477</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1482291417477</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156525000" />
+    <option name="totallyTimeSpent" value="160287000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1465,25 +1503,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="2" width="2900" height="1549" extended-state="0" />
-    <editor active="true" />
+    <frame x="-13" y="-13" width="2906" height="1566" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943013" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32314745" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.264637" sideWeight="0.50289226" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963493" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2616099" sideWeight="0.49710774" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2582124" sideWeight="0.49710774" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925898" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1928181" sideWeight="0.49855387" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23959827" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23908375" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30136007" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24982105" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1495,7 +1534,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947916" sideWeight="0.5" order="9" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3236607" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SBT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943013" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -1518,7 +1556,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="完成deamon进程" />
+    <option name="SHOW_PATCH_IN_EXPLORER" value="false" />
     <MESSAGE value="修改了两个阻塞队列的最大可存放数&#10;" />
     <MESSAGE value="解决了三个会导致OOM的BUG&#10;目前程序运行比较稳定，但是代码质量比较差&#10;如果没有出现问题就不打算更改代码了...毕竟是一个小实验&#10;完成这个部分下一步就是MR操作了" />
     <MESSAGE value="完成了这个实验 以及对实验效果的采集&#10;使用了144、148、1412、1424等线程组合测试最佳效果" />
@@ -1543,7 +1581,8 @@
     <MESSAGE value="finishing the multi-thread read program" />
     <MESSAGE value="修正并完成两组关键字扫描工作&#10;Mysql与Hbase&#10;下一步加入地理索引扫描" />
     <MESSAGE value="升级了GUAVA20的jar包" />
-    <option name="LAST_COMMIT_MESSAGE" value="升级了GUAVA20的jar包" />
+    <MESSAGE value="加入了按照关键字读取文件的class&#10;开始吧文件读入Mysql中" />
+    <option name="LAST_COMMIT_MESSAGE" value="加入了按照关键字读取文件的class&#10;开始吧文件读入Mysql中" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1556,13 +1595,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/src/lib/hadoop-mapreduce-client-app-2.5.1.jar!/org/apache/hadoop/mapred/YarnChild.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2781">
-          <caret line="157" column="0" lean-forward="false" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/ScanMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
@@ -1741,14 +1773,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="85" column="62" lean-forward="false" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/src/lib/hbase-client-1.2.1.jar!/org/apache/hadoop/hbase/filter/PrefixFilter.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="47">
@@ -1874,21 +1898,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sql/jdbcConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1662">
-          <caret line="76" column="26" lean-forward="false" selection-start-line="76" selection-start-column="26" selection-end-line="76" selection-end-column="26" />
-          <folding>
-            <marker date="1482219599374" expanded="true" signature="1917:1999" ph="insert into checkin... " />
-            <marker date="1482219599374" expanded="true" signature="5588:5669" ph="select count... poiinform" />
-            <marker date="1482219599374" expanded="true" signature="6302:6363" ph="delete from " />
-            <marker date="1482219599374" expanded="true" signature="6851:6897" ph="select DISTI... checkin" />
-            <marker date="1482219599374" expanded="true" signature="7957:8069" ph="SELECT disti... checkin" />
-            <marker date="1482219599374" expanded="true" signature="8863:8965" ph="SELECT disti... checkin" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dataRead/getCityData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1224">
@@ -1909,10 +1918,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GeoHashLib/Hbase/CheckinDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="668">
+          <caret line="85" column="62" lean-forward="false" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/7a8d0b76/5a55f659-9a30-4998-b23c-75323c1d8fad/rawdata.checkin">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sql/jdbcConnector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-306">
+          <caret line="21" column="73" lean-forward="false" selection-start-line="21" selection-start-column="73" selection-end-line="21" selection-end-column="73" />
+          <folding>
+            <marker date="1482223003375" expanded="true" signature="1909:1991" ph="insert into checkin... " />
+            <marker date="1482223003375" expanded="true" signature="5580:5661" ph="select count... poiinform" />
+            <marker date="1482223003375" expanded="true" signature="6294:6355" ph="delete from " />
+            <marker date="1482223003375" expanded="true" signature="6843:6889" ph="select DISTI... checkin" />
+            <marker date="1482223003375" expanded="true" signature="7949:8061" ph="SELECT disti... checkin" />
+            <marker date="1482223003375" expanded="true" signature="8855:8957" ph="SELECT disti... checkin" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/firstPartMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+        <state relative-caret-position="385">
+          <caret line="23" column="69" lean-forward="true" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
           <folding />
         </state>
       </provider>
