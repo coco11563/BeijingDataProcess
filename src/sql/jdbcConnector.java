@@ -19,7 +19,7 @@ import java.util.List;
 public class jdbcConnector {
     public static int dul = 0;
     public static int insert = 0;
-    private static final String DATABASEADDRESS = "jdbc:mysql://localhost?characterEncoding=utf8&useSSL=true";
+    private static final String DATABASEADDRESS = "jdbc:mysql://192.168.1.80/beijingdata?characterEncoding=utf8&useSSL=true";
     private static final String USER = "root";
     private static final String PASSWORD = "1234";
     private static final String DRIVER = "com.mysql.jdbc.Driver";

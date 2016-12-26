@@ -205,19 +205,24 @@ public class GeohaseQuery {
         return counter;
     }
     /**
-     * scale : 7 double Filter -> 42365ms - 276
-     * scale : 7 Mysql -> 3588ms - 270
      *
-     * scale : 6 double Filter -> 53043ms - 2999
-     * scale : 6 Msyql -> 4568ms -> 2964个
+     * scale : 7 double Filter -> 42365ms(600w) - 62753ms(1100w) - 276
+     * scale : 7 Mysql -> 3588ms(600w) - 3444ms(1100w) - 270
      *
-     * scale : 5 single Filter -> 162179ms - 79099
-     * scale : 5 Mysql -> 29814ms - 75697
+     * scale : 6 double Filter -> 53043ms(600w) - 80963ms(1100w) - 2999
+     * scale : 6 Msyql -> 4568ms(600w) - 3892ms(1100w) -> 2964个
      *
-     * scale : 4 double Filter -> 179260ms - 291231
-     * scale : 4 Mysql -> 214472ms - 283748
+     * scale : 5 single Filter -> 162179ms(600w)- 226570ms(1100w),260255ms,232864ms,188434ms - 79099
+     * scale : 5 Mysql -> 29814ms(600w)36614 - 35582ms(1100w) - 75697
      *
-     * scale : 3 double Filter -> 135019ms - 312306个
+     * scale : 4 double Filter -> 179260ms(600w) - 238888ms(1100w) - 291231 , 293858
+     * scale : 4 Mysql -> 214472ms(600w) - 192484ms(1100w) - 286328 , 283748
+     *
+     * scale : 3 double Filter -> 308301ms(600w) - 313344ms(1100w) - 341051个
+     * scale : 3 Mysql -> 400452ms(600w) - 394581ms(1100w) - 333694个
+     *
+     * scale : 2 double Filter -> 308575ms 346397
+     * scale : 2 Mysql -> 463649ms 338174
      *
      * @param args
      * @throws IOException
@@ -226,15 +231,15 @@ public class GeohaseQuery {
      */
     public static  void main(String args[]) throws IOException, InterruptedException, ExecutionException {
         long start = System.currentTimeMillis();
-        int i = query(39.9208460000,116.4165150000, "北京", 3);
+        int i = query(39.9208460000,116.4165150000, "北京", 7);
         long end = System.currentTimeMillis();
         System.out.println(end - start + "ms");
         System.out.println(i + "个");
-        start = System.currentTimeMillis();
-        int j = sqlQuery(39.9208460000,116.4165150000, "北京", 3);
-        end = System.currentTimeMillis();
-        System.out.println(end - start + "ms");
-        System.out.println(j + "个");
+//        long start_1 = System.currentTimeMillis();
+//        int j = sqlQuery(39.9208460000,116.4165150000, "北京", 5);
+//        long end_1 = System.currentTimeMillis();
+//        System.out.println(end_1 - start_1 + "ms");
+//        System.out.println(j + "个");
     }
 
 }
